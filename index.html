@@ -42,7 +42,10 @@ body{font-family:'Cairo',sans-serif;background:radial-gradient(circle at top rig
 .slide.active{opacity:1;visibility:visible;pointer-events:auto}
 .frame{width:min(1240px,100%);height:min(80vh,820px);border-radius:34px;padding:32px;position:relative;overflow:hidden;background:linear-gradient(180deg,rgba(255,255,255,.10),rgba(255,255,255,.05));border:1px solid rgba(255,255,255,.15);box-shadow:var(--shadow);backdrop-filter:blur(18px)}
 .frame::before{content:"";position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,255,255,.08),transparent 34%,transparent 64%,rgba(255,255,255,.05));pointer-events:none}
-.slide-index{position:absolute;top:24px;left:26px;font-size:14px;color:#f4ecffb4;padding:8px 14px;border-radius:999px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12)}
+.slide-index{
+  position:absolute;top:24px;left:26px;font-size:14px;color:#f4ecffb4;padding:8px 14px;border-radius:999px;
+  background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);direction:ltr
+}
 .tag{display:inline-flex;align-items:center;gap:10px;padding:8px 16px;border-radius:999px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);font-size:13px;color:#ffedba;margin-bottom:16px}
 .tag i{width:9px;height:9px;border-radius:50%;display:inline-block;background:var(--gold);box-shadow:0 0 14px rgba(246,196,83,.7)}
 .title{font-size:clamp(32px,4vw,64px);line-height:1.12;font-weight:900;letter-spacing:-1px;margin-bottom:16px}
@@ -143,62 +146,39 @@ body{font-family:'Cairo',sans-serif;background:radial-gradient(circle at top rig
 .slide.show .money-card:nth-child(4),.slide.show .scene:nth-child(4){animation-delay:.36s}
 .spark{width:6px;height:6px;border-radius:50%;background:#fff7d1;filter:blur(.3px);z-index:1;opacity:.7;animation:twinkle 3s ease-in-out infinite}
 
-/* New first slide */
-/* ===== Title Only Slide (FIXED SPACING + POSITION) ===== */
+/* ===== First Slide Title Only (final fixed version) ===== */
 .title-only{
   display:grid;
   place-items:center;
   text-align:center;
   height:100%;
   position:relative;
-  transform:translateY(-50px); /* رفع العنوان كله لفوق */
+  z-index:2;
+  transform:translateY(-46px);
 }
-
 .title-only-box{
   width:min(980px,100%);
-  padding:28px 20px;
+  padding:18px 20px;
 }
-
 .title-only .tag{
   justify-content:center;
-  margin-bottom:30px; /* مسافة أكبر بينه وبين العنوان */
+  margin-bottom:32px;
 }
-
 .title-only .title{
   margin-bottom:0;
-  font-size:clamp(10px,5.2vw,78px);
-  line-height:1.8; /* مسافة بين السطور */
-  letter-spacing:0.5px;
+  font-size:clamp(26px,3.35vw,56px);
+  line-height:1.82;
+  letter-spacing:0;
+  max-width:980px;
 }
-
-/* المسافة بين السطرين (باستخدام br) */
 .title-only .title br{
   display:block;
   content:"";
-  margin-top:16px;
+  margin-top:12px;
 }
 
-/* تحسين بسيط للموبايل */
-@media (max-width:768px){
-  .title-only{
-    transform:translateY(-30px);
-  }
-
-  .title-only .title{
-    font-size:clamp(26px,8vw,40px);
-    line-height:1.7;
-  }
-
-  .title-only .title br{
-    margin-top:12px;
-  }
-
-  .title-only .tag{
-    margin-bottom:18px;
-  }
-}
-
-@keyframes spin{to{transform:rotate(360deg)}} @keyframes spinReverse{to{transform:rotate(-360deg)}}
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes spinReverse{to{transform:rotate(-360deg)}}
 @keyframes rise{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:translateY(0)}}
 @keyframes fadeLeft{from{opacity:0;transform:translateX(-40px) translateY(18px)}to{opacity:1;transform:translateX(0) translateY(0)}}
 @keyframes fadeUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
@@ -262,13 +242,8 @@ body{font-family:'Cairo',sans-serif;background:radial-gradient(circle at top rig
   .hero-point span{font-size:12px}
   .hero-point small{font-size:10px;line-height:1.6}
 
-  .section-head h2,
-  .panel h2,
-  .closing-box h2{font-size:clamp(20px,6vw,28px);line-height:1.2;margin-bottom:10px}
-  .section-head p,
-  .panel p,
-  .panel-copy,
-  .closing-box p{font-size:12px;line-height:1.7}
+  .section-head h2,.panel h2,.closing-box h2{font-size:clamp(20px,6vw,28px);line-height:1.2;margin-bottom:10px}
+  .section-head p,.panel p,.panel-copy,.closing-box p{font-size:12px;line-height:1.7}
 
   .money-grid{grid-template-columns:repeat(2,1fr);gap:10px;margin-top:12px}
   .money-card{min-height:auto;padding:12px}
@@ -303,8 +278,23 @@ body{font-family:'Cairo',sans-serif;background:radial-gradient(circle at top rig
 
   .slide:nth-of-type(1){padding-bottom:calc(var(--ctrl-h) + env(safe-area-inset-bottom) + 84px)}
   .slide:nth-of-type(1) .frame{padding-bottom:calc(var(--ctrl-h) + env(safe-area-inset-bottom) + 118px)}
-  .slide:nth-of-type(1) .title-only-box{padding:18px 8px}
-  .slide:nth-of-type(1) .title-only .title{font-size:clamp(26px,8vw,40px);line-height:1.22}
+  .slide:nth-of-type(1) .title-only{
+    transform:translateY(-26px);
+  }
+  .slide:nth-of-type(1) .title-only-box{
+    padding:10px 8px;
+  }
+  .slide:nth-of-type(1) .title-only .tag{
+    margin-bottom:18px;
+  }
+  .slide:nth-of-type(1) .title-only .title{
+    font-size:clamp(22px,6.1vw,36px);
+    line-height:1.72;
+    max-width:100%;
+  }
+  .slide:nth-of-type(1) .title-only .title br{
+    margin-top:8px;
+  }
 
   .slide:nth-of-type(2){padding-bottom:calc(var(--ctrl-h) + env(safe-area-inset-bottom) + 84px)}
   .slide:nth-of-type(2) .frame{padding-bottom:calc(var(--ctrl-h) + env(safe-area-inset-bottom) + 118px)}
@@ -330,14 +320,20 @@ body{font-family:'Cairo',sans-serif;background:radial-gradient(circle at top rig
   .slide{padding:70px 8px 70px}
   .frame{padding:16px 14px 18px}
   .title{font-size:26px}
-  .section-head h2,
-  .panel h2,
-  .closing-box h2{font-size:22px}
+  .section-head h2,.panel h2,.closing-box h2{font-size:22px}
   .brand-text strong{font-size:11px}
   .brand-text span{font-size:9px}
   .progress-shell{width:30vw;min-width:86px}
   .money-number{font-size:28px}
   .summary-card b{font-size:26px}
+
+  .slide:nth-of-type(1) .title-only{
+    transform:translateY(-18px);
+  }
+  .slide:nth-of-type(1) .title-only .title{
+    font-size:24px;
+    line-height:1.68;
+  }
 }
 
 /* Mini Charts */
@@ -347,18 +343,11 @@ body{font-family:'Cairo',sans-serif;background:radial-gradient(circle at top rig
 
 /* Controls Layout */
 .control-bar{position:fixed;bottom:10px;left:50%;transform:translateX(-50%);z-index:40;display:flex;align-items:center;gap:12px}
-
-/* Nav Buttons (Prev/Next) */
 .nav-btn{width:42px;height:42px;border-radius:50%;border:1px solid rgba(255,255,255,.18);background:rgba(255,255,255,.08);backdrop-filter:blur(12px);display:grid;place-items:center;cursor:pointer;box-shadow:0 10px 30px rgba(0,0,0,.25);transition:.25s}
 .nav-btn:hover{background:rgba(255,255,255,.15);transform:scale(1.08)}
-
-/* Chevron Arrows */
 .chev{display:block;width:9px;height:9px;border-top:2px solid var(--gold);border-right:2px solid var(--gold)}
 .chev.right{transform:rotate(45deg)}
 .chev.left{transform:rotate(-135deg)}
-
-/* Pause / Play Button */
-.control-bar{position:fixed;bottom:10px;left:50%;transform:translateX(-50%);z-index:40}
 .control-btn{display:flex;align-items:center;gap:8px;padding:10px 16px;border-radius:999px;border:1px solid rgba(255,255,255,.18);background:rgba(255,255,255,.08);backdrop-filter:blur(12px);color:#fff;font-weight:700;font-size:13px;cursor:pointer;box-shadow:0 10px 30px rgba(0,0,0,.25);transition:.3s}
 .control-btn:hover{background:rgba(255,255,255,.15);transform:scale(1.05)}
 .control-icon{display:flex;gap:3px}
@@ -378,20 +367,12 @@ body{font-family:'Cairo',sans-serif;background:radial-gradient(circle at top rig
         <span class="logo-fallback">جمعية<br>الفحيحيل<br>التعاونية</span>
         <img id="brandLogoImg" src="./logo.png" alt="شعار جمعية الفحيحيل التعاونية" onerror="this.style.display='none'; document.getElementById('brandLogo').classList.add('fallback-only');">
       </div>
-      <div class="brand-text">
-        <strong>جمعية الفحيحيل التعاونية</strong>
-        <span>حصاد 2025</span>
-      </div>
+      <div class="brand-text"><strong>جمعية الفحيحيل التعاونية</strong><span>حصاد 2025</span></div>
     </div>
-    <div class="progress-shell glass">
-      <div class="progress-track">
-        <div class="progress-bar" id="progressBar"></div>
-      </div>
-    </div>
+    <div class="progress-shell glass"><div class="progress-track"><div class="progress-bar" id="progressBar"></div></div></div>
   </div>
 
   <div class="slides" id="slides">
-
     <section class="slide active">
       <div class="frame">
         <div class="slide-index">01 / 06</div>
@@ -399,8 +380,9 @@ body{font-family:'Cairo',sans-serif;background:radial-gradient(circle at top rig
           <div class="title-only-box">
             <div class="tag"><i></i> حصاد عام 2025</div>
             <h1 class="title">
-              <span class="line">حصاد <span class="accent">جمعية الفحيحيل</span></span>
-              <span class="line">بين تصحيح المسار والنمو المستدام</span>
+              حصاد <span class="accent">جمعية الفحيحيل</span><br>
+              بين تصحيح المسار والنمو<br>
+              المستدام
             </h1>
           </div>
         </div>
@@ -557,19 +539,16 @@ body{font-family:'Cairo',sans-serif;background:radial-gradient(circle at top rig
             <div class="tag" style="justify-content:center"><i></i> الخلاصة الاستراتيجية</div>
             <h2>نتائج 2025 تؤكد <span class="accent">تحسن الأداء المالي</span><br>ودعم استقرار الجمعية ونموها</h2>
             <p>ما تحقق خلال عام 2025 يعكس انتقال الجمعية إلى وضع أكثر توازناً واستقراراً، من خلال خفض المصروفات، رفع الإيرادات، وتنشيط الأصول والخدمات بما يدعم استدامة الأداء والعائد.</p>
-
             <div class="summary-grid">
               <div class="summary-card"><b class="count" data-target="274675">0</b><span>أثر مالي مباشر ناتج عن <strong>خفض المصروفات 165,199</strong> + <strong>نمو الإيرادات 109,476</strong>.</span></div>
               <div class="summary-card"><b class="count" data-target="4075">0</b><span>عائد شهري من تنمية الاستثمارات وتفعيل بعض الأصول بصورة أفضل.</span></div>
               <div class="summary-card"><b class="count" data-target="3">0</b><span>مبادرات رقمية وخدمية دعمت سهولة الوصول للخدمات ورفعت جاهزية الجمعية للمستقبل.</span></div>
             </div>
-
             <div class="footer-note">جمعية الفحيحيل التعاونية • حصاد عام 2025 • تصميم جديد مبني على البيانات الأصلية</div>
           </div>
         </div>
       </div>
     </section>
-
   </div>
 
   <div class="control-bar">
@@ -714,7 +693,6 @@ const toggleText = document.getElementById('toggleText');
 
 toggleBtn.addEventListener('click',()=>{
   isPaused = !isPaused;
-
   if(isPaused){
     clearInterval(timer);
     toggleBtn.classList.add('paused');
