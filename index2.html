@@ -1,0 +1,713 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>حصاد جمعية الفحيحيل التعاونية 2025</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#100d2a;--bg2:#1b1443;--card:rgba(255,255,255,.08);--line:rgba(255,255,255,.14);
+  --text:#f8f7ff;--muted:#d8d2ec;--gold:#f6c453;--pink:#ff77b7;--violet:#9d7cff;--mint:#6ef0d3;
+  --shadow:0 22px 70px rgba(0,0,0,.28);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{width:100%;height:100%;overflow:hidden}
+body{font-family:'Cairo',sans-serif;background:radial-gradient(circle at top right,#412064 0%,#1b1543 34%,#100d2a 68%,#090717 100%);color:var(--text)}
+.presentation{position:relative;width:100vw;height:100vh;overflow:hidden;--ctrl-h:70px}
+.orb,.grid,.noise,.spark{position:absolute;pointer-events:none}
+.orb{border-radius:50%;filter:blur(90px);opacity:.42;z-index:0}
+.o1{width:360px;height:360px;top:-90px;right:-80px;background:#ff77b748;animation:float1 14s ease-in-out infinite}
+.o2{width:420px;height:420px;left:-120px;bottom:-110px;background:#8d7dff42;animation:float2 16s ease-in-out infinite}
+.o3{width:280px;height:280px;left:28%;top:35%;background:#6ef0d328;animation:float3 12s ease-in-out infinite}
+.grid{inset:0;background:linear-gradient(rgba(255,255,255,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.04) 1px,transparent 1px);background-size:48px 48px;mask-image:radial-gradient(circle at center, black 35%, transparent 88%);opacity:.55;z-index:0}
+.noise{inset:0;opacity:.07;z-index:0;background-image:radial-gradient(circle at 15% 20%, #fff 0 1px, transparent 1px),radial-gradient(circle at 78% 24%, #fff 0 1px, transparent 1px),radial-gradient(circle at 58% 72%, #fff 0 1px, transparent 1px),radial-gradient(circle at 30% 80%, #fff 0 1px, transparent 1px);background-size:160px 160px}
+.topbar{position:fixed;top:8px;left:20px;right:20px;display:flex;align-items:center;justify-content:space-between;gap:16px;z-index:30}
+.glass{backdrop-filter:blur(16px);background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.14);box-shadow:var(--shadow)}
+.brand{display:flex;align-items:center;gap:12px;border-radius:20px;padding:10px 14px}
+.brand-logo{width:78px;height:78px;border-radius:20px;background:linear-gradient(180deg,rgba(255,255,255,.96),rgba(255,255,255,.88));overflow:hidden;display:grid;place-items:center;box-shadow:0 14px 30px rgba(0,0,0,.22), 0 0 24px rgba(246,196,83,.18);flex-shrink:0;padding:6px}
+.brand-logo img{width:100%;height:100%;object-fit:contain;display:block;filter:drop-shadow(0 2px 6px rgba(0,0,0,.15))}
+.logo-fallback{display:none;font-size:10px;line-height:1.35;font-weight:900;color:#4b2f00;text-align:center;padding:8px}
+.brand-logo.fallback-only .logo-fallback{display:block}
+.brand-logo.fallback-only img{display:none}
+.brand-text strong{display:block;font-size:15px}
+.brand-text span{display:block;font-size:12px;color:#ece5ffcf}
+.progress-shell{min-width:230px;max-width:320px;width:28vw;border-radius:999px;padding:6px}
+.progress-track{height:6px;background:rgba(255,255,255,.12);border-radius:999px;overflow:hidden}
+.progress-bar{height:100%;width:0;border-radius:999px;background:linear-gradient(90deg,var(--gold),var(--pink),var(--violet));transition:width .9s ease;box-shadow:0 0 18px rgba(246,196,83,.55)}
+.slides{position:relative;width:100%;height:100%;z-index:2}
+.slide{direction:rtl;position:absolute;inset:0;width:100%;height:100%;padding:82px 54px 72px;display:flex;align-items:flex-start;justify-content:center;overflow:hidden;opacity:0;visibility:hidden;pointer-events:none;transition:opacity .9s ease, visibility .9s ease}
+.slide.active{opacity:1;visibility:visible;pointer-events:auto}
+.frame{width:min(1240px,100%);height:min(80vh,820px);border-radius:34px;padding:32px;position:relative;overflow:hidden;background:linear-gradient(180deg,rgba(255,255,255,.10),rgba(255,255,255,.05));border:1px solid rgba(255,255,255,.15);box-shadow:var(--shadow);backdrop-filter:blur(18px)}
+.frame::before{content:"";position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,255,255,.08),transparent 34%,transparent 64%,rgba(255,255,255,.05));pointer-events:none}
+.slide-index{position:absolute;top:24px;left:26px;font-size:14px;color:#f4ecffb4;padding:8px 14px;border-radius:999px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12)}
+.tag{display:inline-flex;align-items:center;gap:10px;padding:8px 16px;border-radius:999px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);font-size:13px;color:#ffedba;margin-bottom:16px}
+.tag i{width:9px;height:9px;border-radius:50%;display:inline-block;background:var(--gold);box-shadow:0 0 14px rgba(246,196,83,.7)}
+.title{font-size:clamp(32px,4vw,64px);line-height:1.12;font-weight:900;letter-spacing:-1px;margin-bottom:16px}
+.accent{background:linear-gradient(90deg,#fff0bf,var(--gold),#ffe59c);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.lead{color:var(--muted);font-size:clamp(14px,1.45vw,20px);line-height:1.95;margin-bottom:22px;max-width:760px}
+.hero{display:grid;grid-template-columns:1.1fr .9fr;gap:26px;align-items:center;height:100%;position:relative;z-index:2}
+.hero-points,.money-grid,.summary-grid{display:grid;gap:14px}
+.hero-points{grid-template-columns:repeat(3,1fr)}
+.hero-point,.money-card,.panel,.summary-card,.impact-card,.pillar,.scene{border-radius:24px;padding:18px;background:linear-gradient(180deg,rgba(255,255,255,.11),rgba(255,255,255,.05));border:1px solid rgba(255,255,255,.12)}
+.hero-point b{display:block;font-size:30px;color:#ffe09a;margin-bottom:4px}
+.hero-point span{display:block;font-size:13px;color:#fff;margin-bottom:8px}
+.hero-point small{display:block;font-size:11px;color:#d9d3eab3;line-height:1.85}
+.visual-wrap{display:flex;align-items:center;justify-content:center;height:100%;position:relative}
+.ring-stage{width:min(430px,92%);aspect-ratio:1/1;position:relative;display:grid;place-items:center}
+.ring,.ring2,.ring3{position:absolute;border-radius:50%;border:1px solid rgba(255,255,255,.12)}
+.ring{inset:0;border-top-color:var(--gold);animation:spin 14s linear infinite}
+.ring2{inset:28px;border-left-color:var(--pink);animation:spinReverse 11s linear infinite}
+.ring3{inset:58px;border-bottom-color:var(--mint);animation:spin 9s linear infinite}
+.core{width:54%;aspect-ratio:1/1;border-radius:30px;background:linear-gradient(145deg,#fff2ca,#ffd26f 45%,#d89b2d 100%);color:#4b2f00;display:grid;place-items:center;text-align:center;box-shadow:0 25px 60px rgba(246,196,83,.25);transform:rotate(8deg)}
+.core strong{display:block;font-size:52px;line-height:1}
+.core span{display:block;font-size:16px;font-weight:800}
+.chip{position:absolute;padding:10px 14px;border-radius:16px;background:rgba(255,255,255,.10);border:1px solid rgba(255,255,255,.14);backdrop-filter:blur(12px);font-size:12px;box-shadow:var(--shadow)}
+.chip1{top:10%;right:-2%;animation:float2 8s ease-in-out infinite}
+.chip2{bottom:17%;left:0;animation:float1 8.5s ease-in-out infinite}
+.chip3{bottom:10%;right:17%;animation:float3 7.5s ease-in-out infinite}
+.section-head h2{font-size:clamp(32px,3.8vw,56px);line-height:1.18;margin-bottom:14px;opacity:0;transform:translateY(18px) scale(0.97);position:relative}
+.section-head h2::after{content:"";position:absolute;left:0;right:0;bottom:-6px;height:3px;border-radius:3px;background:linear-gradient(90deg,transparent 0%, rgba(255,255,255,.08) 18%, var(--gold) 38%, #fff7cf 50%, var(--pink) 62%, rgba(255,255,255,.08) 82%, transparent 100%);background-size:200% 100%;opacity:.0;transform:scaleX(.6);transition:.5s}
+.slide.show .section-head h2::after{opacity:1;transform:scaleX(1);animation:shimmerLine 2.2s linear infinite}
+.section-head h2 .accent{text-shadow:0 0 14px rgba(246,196,83,.35), 0 0 28px rgba(255,119,183,.18)}
+.section-head p,.panel p{color:var(--muted);line-height:1.9;font-size:15px}
+.panel-copy{color:var(--muted);line-height:1.9;font-size:15px;margin-top:6px}
+.highlight-word{color:var(--gold);font-weight:700;text-shadow:0 0 12px rgba(246,196,83,.28)}
+.money-grid{grid-template-columns:repeat(4,1fr);margin-top:18px}
+.money-card{min-height:176px;position:relative;overflow:hidden}
+.money-card::after{content:"";position:absolute;inset:auto -30px -50px auto;width:120px;height:120px;border-radius:50%;background:rgba(255,255,255,.06);filter:blur(10px)}
+.money-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px}
+.money-icon{width:44px;height:44px;border-radius:14px;display:grid;place-items:center;font-size:20px;background:rgba(255,255,255,.11)}
+.money-status{font-size:12px;padding:6px 10px;border-radius:999px;background:rgba(255,255,255,.10)}
+.money-number{font-size:34px;font-weight:900;line-height:1.1;margin-bottom:6px}
+.money-unit{font-size:11px;color:#e6deff96;margin-bottom:4px;display:block}
+.money-label{font-size:14px;font-weight:700;margin-bottom:8px}
+.money-note{font-size:12px;line-height:1.8;color:#ece5ffb8}
+.gold .money-number,.gold .money-label,.gold .money-icon,.gold .money-status{color:#ffe09a}
+.pink .money-number,.pink .money-label,.pink .money-icon,.pink .money-status{color:#ffb4d7}
+.violet .money-number,.violet .money-label,.violet .money-icon,.violet .money-status{color:#cbbdff}
+.mint .money-number,.mint .money-label,.mint .money-icon,.mint .money-status{color:#9cf9e8}
+.dual{display:grid;grid-template-columns:1fr 1fr;gap:18px;align-items:stretch}
+.panel{padding:22px 24px;overflow:visible;height:100%;display:flex;flex-direction:column}
+.impact-stack,.pillars{display:grid;gap:14px;margin-top:16px}
+.impact-stack{display:flex;flex-direction:column;gap:16px;align-content:start;height:auto;overflow:visible}
+.slide:nth-of-type(4) .panel{padding:18px 20px}
+.slide:nth-of-type(4) .impact-stack{gap:12px;margin-top:12px}
+.slide:nth-of-type(4) .impact-card{padding:14px 16px;border-radius:20px}
+.slide:nth-of-type(4) .impact-icon{width:46px;height:46px;min-width:46px;font-size:21px}
+.slide:nth-of-type(4) .impact-body strong{font-size:16px;margin-bottom:4px}
+.slide:nth-of-type(4) .impact-body p{font-size:12px;line-height:1.65}
+.slide:nth-of-type(4) .impact-chip{margin-top:8px;padding:5px 10px;font-size:11px}
+.slide:nth-of-type(4) .panel-seq{margin-bottom:2px}
+.slide:nth-of-type(4) .panel-copy{font-size:14px;line-height:1.75}
+.slide:nth-of-type(4) .pillars{gap:12px}
+.slide:nth-of-type(4) .pillar{padding:14px}
+.slide:nth-of-type(4) .pillar strong{font-size:15px;margin-bottom:6px}
+.slide:nth-of-type(4) .pillar p{font-size:12px;line-height:1.65}
+.impact-card{display:flex;gap:14px;align-items:flex-start;width:100%;position:relative;transform:none}
+.impact-card,.pillar,.panel-seq{opacity:0}
+.panel-seq{transform:translateY(18px)}
+.slide.show .panel-seq{animation:rise .65s ease forwards}
+.slide.show .impact-stack .impact-card:nth-child(1){animation:fadeLeft .68s ease forwards .35s}
+.slide.show .impact-stack .impact-card:nth-child(2){animation:fadeUp .68s ease forwards .78s}
+.slide.show .impact-stack .impact-card:nth-child(3){animation:fadeLeft .68s ease forwards 1.21s}
+.slide.show .pillars .pillar:nth-child(1){animation:fadeUp .55s ease forwards 2.05s}
+.slide.show .pillars .pillar:nth-child(2){animation:fadeUp .55s ease forwards 2.18s}
+.slide.show .pillars .pillar:nth-child(3){animation:fadeUp .55s ease forwards 2.31s}
+.slide.show .pillars .pillar:nth-child(4){animation:fadeUp .55s ease forwards 2.44s}
+.impact-icon{width:52px;height:52px;min-width:52px;border-radius:16px;display:grid;place-items:center;background:rgba(255,255,255,.11);font-size:24px}
+.impact-body strong{display:block;font-size:18px;margin-bottom:6px}
+.impact-body p{font-size:13px;line-height:1.8;margin:0;color:#ede7ffc7}
+.impact-chip{display:inline-flex;align-items:center;gap:6px;margin-top:10px;padding:6px 12px;border-radius:999px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.1);font-size:12px;color:#ffe3a6}
+.pillars{grid-template-columns:repeat(2,1fr);gap:16px;align-content:start}
+.pillar{min-height:auto;padding:16px}
+.pillar strong{display:block;font-size:17px;margin-bottom:8px}
+.pillar p{font-size:13px;line-height:1.8;margin:0;color:#ede7ffc7}
+.scene-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:16px}
+.scene b{display:block;font-size:16px;margin-bottom:8px}
+.scene span{display:block;font-size:13px;line-height:1.8;color:#f3ecffcf}
+.goldish{background-color:rgba(246,196,83,.12)} .pinkish{background-color:rgba(255,119,183,.12)} .violetish{background-color:rgba(158,124,255,.12)} .mintish{background-color:rgba(110,240,211,.12)}
+.closing{display:grid;place-items:center;text-align:center;height:100%}
+.closing-box{width:min(1040px,100%);min-height:78%;border-radius:36px;padding:60px 44px;background:linear-gradient(180deg,rgba(255,255,255,.10),rgba(255,255,255,.05));border:1px solid rgba(255,255,255,.12);box-shadow:var(--shadow);display:flex;flex-direction:column;justify-content:center;gap:26px}
+.summary-grid{grid-template-columns:repeat(3,1fr);margin-top:36px;gap:22px}
+.summary-card b{display:block;font-size:34px;color:#ffe09a;margin-bottom:8px}
+.summary-card span{display:block;font-size:14px;line-height:1.8;color:#f2ebff}
+.footer-note{margin-top:24px;font-size:12px;color:#eadfff9c}
+.hero-point,.money-card,.scene,.summary-card{opacity:0;transform:translateY(18px)}
+.slide.show .hero-point,.slide.show .money-card,.slide.show .scene,.slide.show .summary-card{animation:rise .65s ease forwards}
+.slide.show .section-head h2{animation:titleIn .9s ease forwards}
+.slide.show .hero-point:nth-child(2),.slide.show .money-card:nth-child(2),.slide.show .scene:nth-child(2),.slide.show .summary-card:nth-child(2){animation-delay:.12s}
+.slide.show .hero-point:nth-child(3),.slide.show .money-card:nth-child(3),.slide.show .scene:nth-child(3),.slide.show .summary-card:nth-child(3){animation-delay:.24s}
+.slide.show .money-card:nth-child(4),.slide.show .scene:nth-child(4){animation-delay:.36s}
+.spark{width:6px;height:6px;border-radius:50%;background:#fff7d1;filter:blur(.3px);z-index:1;opacity:.7;animation:twinkle 3s ease-in-out infinite}
+
+/* New first slide */
+.title-only{
+  display:grid;
+  place-items:center;
+  text-align:center;
+  height:100%;
+  position:relative;
+  z-index:2;
+}
+.title-only-box{
+  width:min(980px,100%);
+  padding:28px 20px;
+}
+.title-only .tag{
+  justify-content:center;
+  margin-bottom:20px;
+}
+.title-only .title{
+  margin-bottom:0;
+  font-size:clamp(38px,5.2vw,78px);
+  line-height:1.18;
+}
+.title-only .title .line{
+  display:block;
+}
+
+@keyframes spin{to{transform:rotate(360deg)}} @keyframes spinReverse{to{transform:rotate(-360deg)}}
+@keyframes rise{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadeLeft{from{opacity:0;transform:translateX(-40px) translateY(18px)}to{opacity:1;transform:translateX(0) translateY(0)}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
+@keyframes titleIn{from{opacity:0;transform:translateY(30px) scale(0.95)}to{opacity:1;transform:translateY(0) scale(1)}}
+@keyframes shimmerLine{0%{background-position:200% 0}100%{background-position:-200% 0}}
+@keyframes float1{0%,100%{transform:translateY(0) translateX(0)}50%{transform:translateY(-16px) translateX(12px)}}
+@keyframes float2{0%,100%{transform:translateY(0) translateX(0)}50%{transform:translateY(18px) translateX(-10px)}}
+@keyframes float3{0%,100%{transform:translateY(0) scale(1)}50%{transform:translateY(-10px) scale(1.04)}}
+@keyframes twinkle{0%,100%{opacity:.2;transform:scale(.8)}50%{opacity:.9;transform:scale(1.25)}}
+#brandLogoImg{background:transparent}
+
+@media (max-width:980px){
+  .slide{padding:84px 16px 22px}
+  .frame{height:auto;min-height:82vh;padding:22px;border-radius:26px}
+  .hero,.dual{grid-template-columns:1fr}
+  .hero-points,.money-grid,.summary-grid,.pillars,.scene-grid{grid-template-columns:repeat(2,1fr)}
+  .topbar{top:12px;left:12px;right:12px;gap:10px}
+  .brand{padding:8px 10px;border-radius:14px}
+  .brand-logo{width:54px;height:54px}
+  .progress-shell{min-width:120px;width:42vw}
+  .slide-index{top:18px;left:18px}
+  .ring-stage{max-width:280px;margin:auto}
+}
+
+@media (max-width:768px){
+  .presentation{height:100svh;overflow:visible;--ctrl-h:64px}
+  .slides{height:100%;overflow:visible}
+  .slide{padding:66px 8px calc(var(--ctrl-h) + env(safe-area-inset-bottom) + 48px);align-items:flex-start;overflow-y:scroll;overscroll-behavior-y:contain;-webkit-overflow-scrolling:touch;touch-action:pan-y}
+  .slide::-webkit-scrollbar{width:0;height:0}
+  .frame{width:100%;height:auto;min-height:auto;padding:16px 14px calc(var(--ctrl-h) + env(safe-area-inset-bottom) + 88px);border-radius:20px;overflow:visible}
+
+  html,body{height:100%;overflow:hidden}
+  body{font-size:14px}
+  .o1{width:180px;height:180px;top:-30px;right:-30px}
+  .o2{width:220px;height:220px;left:-60px;bottom:-60px}
+  .o3{width:140px;height:140px;left:18%;top:44%}
+
+  .topbar{top:8px;left:8px;right:8px;gap:8px}
+  .brand{padding:8px 10px;gap:8px;border-radius:16px;align-items:center}
+  .brand-logo{width:46px;height:46px;border-radius:12px;padding:3px}
+  .brand-text strong{font-size:11px;line-height:1.2}
+  .brand-text span{font-size:9px;line-height:1.2}
+  .progress-shell{min-width:86px;width:28vw;padding:4px}
+  .progress-track{height:4px}
+  .slide-index{top:12px;left:12px;font-size:11px;padding:5px 8px}
+  .tag{font-size:11px;padding:7px 11px;margin-bottom:10px}
+
+  .hero,.dual{grid-template-columns:1fr;gap:12px;height:auto}
+  .visual-wrap{order:-1}
+  .ring-stage{max-width:170px;width:min(170px,56vw)}
+  .core strong{font-size:28px}
+  .core span{font-size:11px}
+  .chip{display:none}
+
+  .title{font-size:clamp(24px,7vw,34px);line-height:1.18;margin-bottom:10px}
+  .lead{font-size:13px;line-height:1.75;margin-bottom:14px;max-width:100%}
+  .hero-points{grid-template-columns:repeat(2,1fr);gap:8px}
+  .hero-points .hero-point:nth-child(3){grid-column:1 / -1}
+  .hero-point{padding:12px 12px}
+  .hero-point b{font-size:22px}
+  .hero-point span{font-size:12px}
+  .hero-point small{font-size:10px;line-height:1.6}
+
+  .section-head h2,
+  .panel h2,
+  .closing-box h2{font-size:clamp(20px,6vw,28px);line-height:1.2;margin-bottom:10px}
+  .section-head p,
+  .panel p,
+  .panel-copy,
+  .closing-box p{font-size:12px;line-height:1.7}
+
+  .money-grid{grid-template-columns:repeat(2,1fr);gap:10px;margin-top:12px}
+  .money-card{min-height:auto;padding:12px}
+  .money-number{font-size:24px}
+  .money-label{font-size:12px}
+  .money-note{font-size:10px;line-height:1.45}
+  .mini-chart{height:44px;margin-top:6px}
+
+  .panel{padding:16px 14px;height:auto}
+  .impact-stack,.pillars,.scene-grid{gap:10px;margin-top:10px}
+  .impact-card,.pillar,.scene{padding:12px;border-radius:16px}
+  .impact-icon{width:38px;height:38px;min-width:38px;font-size:18px;border-radius:10px}
+  .impact-body strong,.pillar strong,.scene b{font-size:14px}
+  .impact-body p,.pillar p,.scene span{font-size:11px;line-height:1.55}
+  .impact-chip{font-size:10px;padding:4px 8px;margin-top:6px}
+  .pillars,.scene-grid{grid-template-columns:repeat(2,1fr)}
+
+  .closing{height:auto}
+  .closing-box{width:100%;min-height:auto;padding:24px 16px 20px;border-radius:22px;gap:14px}
+  .summary-grid{grid-template-columns:repeat(2,1fr);gap:10px;margin-top:14px}
+  .summary-grid .summary-card:nth-child(3){grid-column:1 / -1}
+  .summary-card{padding:14px 12px}
+  .summary-card b{font-size:24px}
+  .summary-card span{font-size:12px;line-height:1.65}
+  .footer-note{margin-top:4px;font-size:10px;line-height:1.5}
+
+  .control-bar{bottom:calc(env(safe-area-inset-bottom) + 8px);gap:8px;z-index:60;padding:6px 8px;border-radius:18px;background:linear-gradient(180deg,rgba(11,8,31,.78),rgba(11,8,31,.9));backdrop-filter:blur(14px);box-shadow:0 -8px 24px rgba(0,0,0,.18)}
+  .nav-btn{width:32px;height:32px;flex:0 0 32px}
+  .control-btn{padding:7px 10px;font-size:11px;min-width:104px;justify-content:center}
+  .control-icon::before,.control-icon::after{height:10px}
+  .chev{width:8px;height:8px}
+
+  .slide:nth-of-type(1){padding-bottom:calc(var(--ctrl-h) + env(safe-area-inset-bottom) + 84px)}
+  .slide:nth-of-type(1) .frame{padding-bottom:calc(var(--ctrl-h) + env(safe-area-inset-bottom) + 118px)}
+  .slide:nth-of-type(1) .title-only-box{padding:18px 8px}
+  .slide:nth-of-type(1) .title-only .title{font-size:clamp(26px,8vw,40px);line-height:1.22}
+
+  .slide:nth-of-type(2){padding-bottom:calc(var(--ctrl-h) + env(safe-area-inset-bottom) + 84px)}
+  .slide:nth-of-type(2) .frame{padding-bottom:calc(var(--ctrl-h) + env(safe-area-inset-bottom) + 118px)}
+  .slide:nth-of-type(2) .ring-stage{max-width:150px;width:min(150px,48vw)}
+  .slide:nth-of-type(2) .hero{gap:8px}
+  .slide:nth-of-type(2) .lead{margin-bottom:10px}
+  .slide:nth-of-type(2) .hero-points{margin-top:8px}
+  .slide:nth-of-type(2) .hero-point:last-child{margin-bottom:22px}
+}
+
+.slide:nth-of-type(2) .hero-point,
+.slide:nth-of-type(3) .money-card{border-radius:18px}
+.slide:nth-of-type(2) .hero-point{padding:10px 11px}
+.slide:nth-of-type(2) .hero-point b{font-size:20px}
+.slide:nth-of-type(2) .hero-point small{font-size:10px;line-height:1.5}
+.slide:nth-of-type(3) .money-note{font-size:10px;line-height:1.45}
+
+@media (max-width:560px){
+  .pillars,.scene-grid{grid-template-columns:1fr}
+}
+
+@media (max-width:480px){
+  .slide{padding:70px 8px 70px}
+  .frame{padding:16px 14px 18px}
+  .title{font-size:26px}
+  .section-head h2,
+  .panel h2,
+  .closing-box h2{font-size:22px}
+  .brand-text strong{font-size:11px}
+  .brand-text span{font-size:9px}
+  .progress-shell{width:30vw;min-width:86px}
+  .money-number{font-size:28px}
+  .summary-card b{font-size:26px}
+}
+
+/* Mini Charts */
+.mini-chart{display:flex;gap:12px;align-items:flex-end;height:80px;margin-top:12px}
+.mini-bar{flex:1;background:linear-gradient(180deg,var(--gold),var(--pink));border-radius:6px 6px 0 0;height:0;transition:height 1.2s ease}
+.mini-bar.small{background:rgba(255,255,255,.2)}
+
+/* Controls Layout */
+.control-bar{position:fixed;bottom:10px;left:50%;transform:translateX(-50%);z-index:40;display:flex;align-items:center;gap:12px}
+
+/* Nav Buttons (Prev/Next) */
+.nav-btn{width:42px;height:42px;border-radius:50%;border:1px solid rgba(255,255,255,.18);background:rgba(255,255,255,.08);backdrop-filter:blur(12px);display:grid;place-items:center;cursor:pointer;box-shadow:0 10px 30px rgba(0,0,0,.25);transition:.25s}
+.nav-btn:hover{background:rgba(255,255,255,.15);transform:scale(1.08)}
+
+/* Chevron Arrows */
+.chev{display:block;width:9px;height:9px;border-top:2px solid var(--gold);border-right:2px solid var(--gold)}
+.chev.right{transform:rotate(45deg)}
+.chev.left{transform:rotate(-135deg)}
+
+/* Pause / Play Button */
+.control-bar{position:fixed;bottom:10px;left:50%;transform:translateX(-50%);z-index:40}
+.control-btn{display:flex;align-items:center;gap:8px;padding:10px 16px;border-radius:999px;border:1px solid rgba(255,255,255,.18);background:rgba(255,255,255,.08);backdrop-filter:blur(12px);color:#fff;font-weight:700;font-size:13px;cursor:pointer;box-shadow:0 10px 30px rgba(0,0,0,.25);transition:.3s}
+.control-btn:hover{background:rgba(255,255,255,.15);transform:scale(1.05)}
+.control-icon{display:flex;gap:3px}
+.control-icon::before,.control-icon::after{content:"";display:block;width:3px;height:12px;background:var(--gold);border-radius:1px}
+.control-btn.paused .control-icon{display:block;width:0;height:0;border-left:12px solid var(--gold);border-top:7px solid transparent;border-bottom:7px solid transparent}
+.control-btn.paused .control-icon::before,
+.control-btn.paused .control-icon::after{display:none}
+</style>
+</head>
+<body>
+<div class="presentation" id="presentation">
+  <div class="orb o1"></div><div class="orb o2"></div><div class="orb o3"></div><div class="grid"></div><div class="noise"></div>
+
+  <div class="topbar">
+    <div class="brand glass">
+      <div class="brand-logo" id="brandLogo">
+        <span class="logo-fallback">جمعية<br>الفحيحيل<br>التعاونية</span>
+        <img id="brandLogoImg" src="./logo.png" alt="شعار جمعية الفحيحيل التعاونية" onerror="this.style.display='none'; document.getElementById('brandLogo').classList.add('fallback-only');">
+      </div>
+      <div class="brand-text">
+        <strong>جمعية الفحيحيل التعاونية</strong>
+        <span>حصاد 2025</span>
+      </div>
+    </div>
+    <div class="progress-shell glass">
+      <div class="progress-track">
+        <div class="progress-bar" id="progressBar"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="slides" id="slides">
+
+    <section class="slide active">
+      <div class="frame">
+        <div class="slide-index">01 / 06</div>
+        <div class="title-only">
+          <div class="title-only-box">
+            <div class="tag"><i></i> حصاد عام 2025</div>
+            <h1 class="title">
+              <span class="line">حصاد <span class="accent">جمعية الفحيحيل</span></span>
+              <span class="line">بين تصحيح المسار والنمو المستدام</span>
+            </h1>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="slide">
+      <div class="frame">
+        <div class="slide-index">02 / 06</div>
+        <div class="hero">
+          <div>
+            <div class="tag"><i></i> حصاد عام 2025</div>
+            <h2 class="title">جهد تصحيحي نحو <span class="accent">الاستقرار والنمو</span></h2>
+            <p class="lead">جهد مكثف لإعادة تصحيح المسار وتحسين الأداء، من ضبط المصروفات وتعزيز الإيرادات إلى استثمار الأصول بكفاءة، بهدف الانتقال بالجمعية إلى وضع أكثر استقرارًا وقوة واستدامة.</p>
+            <div class="hero-points">
+              <div class="hero-point"><b class="count" data-target="109476">0</b><span>نمو الإيرادات</span><small>زيادة الإيرادات من 1,387,804 إلى 1,497,280 دينار كويتي.</small></div>
+              <div class="hero-point"><b class="count" data-target="165199">0</b><span>توفير المصروفات</span><small>خفض المصروفات من 1,588,068 إلى 1,422,869 دينار كويتي.</small></div>
+              <div class="hero-point"><b class="count" data-target="500000">0</b><span>وديعة بنكية</span><small>تعزيز الاستقرار المالي عبر تكوين وديعة بنكية داعمة للمركز المالي.</small></div>
+            </div>
+          </div>
+
+          <div class="visual-wrap">
+            <div class="ring-stage">
+              <div class="ring"></div>
+              <div class="ring2"></div>
+              <div class="ring3"></div>
+              <div class="core"><div><strong>2025</strong><span>عام الإنجاز</span></div></div>
+              <div class="chip chip1">وديعة 500,000 د.ك</div>
+              <div class="chip chip2">توفير 165,199 د.ك</div>
+              <div class="chip chip3">نمو 109,476 د.ك</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="slide">
+      <div class="frame">
+        <div class="slide-index">03 / 06</div>
+        <div class="section-head">
+          <div class="tag"><i></i> لوحة المؤشرات المالية</div>
+          <h2>المؤشرات المالية… <span class="accent">قصة التحسن بالأرقام</span></h2>
+          <p>جرى تجميع المؤشرات المالية الأساسية في بطاقات مركزة تسلط الضوء على الإجراءات الأهم: الوديعة البنكية، خفض الرواتب، خفض المصروفات، ونمو الإيرادات.</p>
+        </div>
+
+        <div class="money-grid">
+          <div class="money-card gold">
+            <div class="money-top"><div class="money-icon">🏦</div><div class="money-status">استقرار</div></div>
+            <div class="money-number count" data-target="500000">0</div>
+            <span class="money-unit">دينار كويتي</span>
+            <div class="money-label">وديعة بنكية</div>
+            <div class="money-note">تعزيز السيولة والاحتياطي المالي.</div>
+            <div class="mini-chart" data-vals="0,500000"></div>
+          </div>
+
+          <div class="money-card violet">
+            <div class="money-top"><div class="money-icon">⚖️</div><div class="money-status">ترشيد</div></div>
+            <div class="money-number count" data-target="106189">0</div>
+            <span class="money-unit">دينار كويتي</span>
+            <div class="money-label">خفض الرواتب</div>
+            <div class="money-note">من 890,184 إلى 783,995</div>
+            <div class="mini-chart" data-vals="890184,783995"></div>
+          </div>
+
+          <div class="money-card mint">
+            <div class="money-top"><div class="money-icon">💰</div><div class="money-status">توفير</div></div>
+            <div class="money-number count" data-target="165199">0</div>
+            <span class="money-unit">دينار كويتي</span>
+            <div class="money-label">خفض المصروفات</div>
+            <div class="money-note">من 1,588,068 إلى 1,422,869</div>
+            <div class="mini-chart" data-vals="1588068,1422869"></div>
+          </div>
+
+          <div class="money-card pink">
+            <div class="money-top"><div class="money-icon">📈</div><div class="money-status">نمو</div></div>
+            <div class="money-number count" data-target="109476">0</div>
+            <span class="money-unit">دينار كويتي</span>
+            <div class="money-label">نمو الإيرادات</div>
+            <div class="money-note">من 1,387,804 إلى 1,497,280</div>
+            <div class="mini-chart" data-vals="1387804,1497280"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="slide">
+      <div class="frame">
+        <div class="slide-index">04 / 06</div>
+        <div class="dual">
+          <div class="panel">
+            <div class="panel-seq">
+              <div class="tag"><i></i> التطوير التشغيلي والاستثماري</div>
+              <h2>التحسن لم يكن مالياً فقط<br>بل <span class="accent">تحولاً في الأصول والتشغيل</span></h2>
+              <p class="panel-copy">تم ترجمة الجهود التشغيلية والاستثمارية إلى نتائج ملموسة، تعكس تحولاً فعليًا في كفاءة الأداء وتعظيم الاستفادة من الأصول.</p>
+            </div>
+            <div class="impact-stack">
+              <div class="impact-card"><div class="impact-icon">🛒</div><div class="impact-body"><strong>تطوير سوق الفواكه والخضار</strong><p>تجديد السوق بالكامل بما ساهم في رفع المبيعات بصورة ملحوظة ومستدامة.</p><div class="impact-chip">رفع المبيعات</div></div></div>
+              <div class="impact-card"><div class="impact-icon">📋</div><div class="impact-body"><strong>كفاءة العقود</strong><p>تخفيض عقد النظافة من 115 إلى 75 دينار، مع مراجعة عقود الأمن والنقل والصيانة.</p><div class="impact-chip">40 د.ك شهرياً</div></div></div>
+              <div class="impact-card"><div class="impact-icon">🏗️</div><div class="impact-body"><strong>تحسين الأصول</strong><p>تحويل فرع خاسر إلى فرع بنك، وتشغيل ملاعب كرة القدم كمصدر دخل إضافي.</p><div class="impact-chip">استثمار للأصل</div></div></div>
+            </div>
+          </div>
+
+          <div class="panel">
+            <div class="panel-seq" style="animation-delay:1.65s">
+              <div class="tag"><i></i> محاور الأثر</div>
+              <h2>أثر مباشر على <span class="accent">الهوية التشغيلية</span></h2>
+              <p class="panel-copy"><span class="highlight-word">باختصار</span>، تعكس هذه المحاور أثراً مباشراً على الأداء العام، من خلال تحسين الكفاءة التشغيلية وتعزيز مصادر الدخل المستدام.</p>
+            </div>
+            <div class="pillars">
+              <div class="pillar"><strong>ترشيد ذكي</strong><p>إعادة ضبط العقود والبنود ذات الأثر المتكرر لتخفيف الضغط على المصروفات التشغيلية.</p></div>
+              <div class="pillar"><strong>استثمار الأصل</strong><p>تحويل الأصول غير الفعالة إلى فرص دخل أكثر استقراراً وعائداً.</p></div>
+              <div class="pillar"><strong>تحديث المرافق</strong><p>تطوير المرافق الحيوية بما ينعكس على تجربة المستفيد والمبيعات والصورة العامة.</p></div>
+              <div class="pillar"><strong>توليد إيراد</strong><p>تشغيل مساحات وفرص جديدة تسهم في بناء تدفقات دخل داعمة للمستقبل.</p></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="slide">
+      <div class="frame">
+        <div class="slide-index">05 / 06</div>
+        <div class="dual">
+          <div class="panel">
+            <div class="tag"><i></i> التحول الرقمي والخدمات</div>
+            <h2>من الخدمات التقليدية إلى <span class="accent">واجهة مستقبلية</span></h2>
+            <p>تم تقديم خدمات التحول الرقمي بصورة واضحة ومنظمة، تتيح للمساهمين والعملاء التعرف عليها بسهولة والاستفادة منها بشكل مباشر.</p>
+            <div class="impact-stack">
+              <div class="impact-card"><div class="impact-icon">📱</div><div class="impact-body"><strong>إطلاق التطبيق الإلكتروني</strong><p>خدمة المساهمين عبر تطبيق خاص يمكّنهم من متابعة حساباتهم وخدماتهم بسهولة.</p></div></div>
+              <div class="impact-card"><div class="impact-icon">🛍️</div><div class="impact-body"><strong>المتجر الرقمي</strong><p>العمل على متجر إلكتروني متكامل يوفر تجربة تسوق أكثر مرونة وراحة.</p></div></div>
+              <div class="impact-card"><div class="impact-icon">📍</div><div class="impact-body"><strong>دعم المساهمين</strong><p>تخصيص مواقع استثمارية جديدة لتعزيز العائد وتنمية الثروة على المدى البعيد.</p></div></div>
+            </div>
+          </div>
+
+          <div class="panel">
+            <div class="tag"><i></i> ملفات الخدمة</div>
+            <h2>ثلاث مبادرات واضحة<br>بهوية <span class="accent">أكثر عصرية</span></h2>
+            <p>تم إبراز كل مبادرة بصورة منظمة توضح دورها وتأثيرها، بما يعكس قيمة الخدمات بشكل مباشر أمام المساهمين والعملاء.</p>
+            <div class="scene-grid">
+              <div class="scene goldish"><b>خدمة المساهمين</b><span>وصول أسهل للبيانات والخدمات ومتابعة العمليات من أي مكان.</span></div>
+              <div class="scene violetish"><b>تجربة تسوق أفضل</b><span>تهيئة البنية اللازمة للمتجر الرقمي وخدمة المستخدم بصورة أكثر مرونة.</span></div>
+              <div class="scene mintish"><b>استثمارات داعمة</b><span>ربط التحول الرقمي بخطط دعم العائد وتعظيم الفائدة للمساهمين.</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="slide">
+      <div class="frame">
+        <div class="slide-index">06 / 06</div>
+        <div class="closing">
+          <div class="closing-box">
+            <div class="tag" style="justify-content:center"><i></i> الخلاصة الاستراتيجية</div>
+            <h2>نتائج 2025 تؤكد <span class="accent">تحسن الأداء المالي</span><br>ودعم استقرار الجمعية ونموها</h2>
+            <p>ما تحقق خلال عام 2025 يعكس انتقال الجمعية إلى وضع أكثر توازناً واستقراراً، من خلال خفض المصروفات، رفع الإيرادات، وتنشيط الأصول والخدمات بما يدعم استدامة الأداء والعائد.</p>
+
+            <div class="summary-grid">
+              <div class="summary-card"><b class="count" data-target="274675">0</b><span>أثر مالي مباشر ناتج عن <strong>خفض المصروفات 165,199</strong> + <strong>نمو الإيرادات 109,476</strong>.</span></div>
+              <div class="summary-card"><b class="count" data-target="4075">0</b><span>عائد شهري من تنمية الاستثمارات وتفعيل بعض الأصول بصورة أفضل.</span></div>
+              <div class="summary-card"><b class="count" data-target="3">0</b><span>مبادرات رقمية وخدمية دعمت سهولة الوصول للخدمات ورفعت جاهزية الجمعية للمستقبل.</span></div>
+            </div>
+
+            <div class="footer-note">جمعية الفحيحيل التعاونية • حصاد عام 2025 • تصميم جديد مبني على البيانات الأصلية</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+  <div class="control-bar">
+    <button class="nav-btn" id="prevBtn" aria-label="السابق">
+      <span class="chev right"></span>
+    </button>
+
+    <button class="control-btn" id="toggleBtn">
+      <span class="control-icon"></span>
+      <span id="toggleText">Pause</span>
+    </button>
+
+    <button class="nav-btn" id="nextBtn" aria-label="التالي">
+      <span class="chev left"></span>
+    </button>
+  </div>
+</div>
+
+<script>
+const slides = document.getElementById('slides');
+const progressBar = document.getElementById('progressBar');
+const slideEls = Array.from(document.querySelectorAll('.slide'));
+const totalSlides = slideEls.length;
+const autoplayDelay = 6500;
+let current = 0;
+let timer;
+let isPaused = false;
+
+function updateProgress(){
+  progressBar.style.width = (((current + 1) / totalSlides) * 100) + '%';
+}
+
+function activate(slide){
+  const charts = slide.querySelectorAll('.mini-chart');
+  charts.forEach(chart=>{
+    if(chart.dataset.done) return;
+    const vals = chart.dataset.vals.split(',').map(Number);
+    const max = Math.max(...vals);
+    chart.innerHTML='';
+    vals.forEach((v,i)=>{
+      const bar=document.createElement('div');
+      bar.className='mini-bar'+(i===0?' small':'');
+      chart.appendChild(bar);
+      setTimeout(()=>{
+        bar.style.height = (v/max*100)+'%';
+      },200);
+    });
+    chart.dataset.done = true;
+  });
+
+  slideEls.forEach(s=>s.classList.remove('show'));
+  void slide.offsetWidth;
+  slide.classList.add('show');
+
+  const counters = slide.querySelectorAll('.count');
+  counters.forEach(el => {
+    if (el._raf) cancelAnimationFrame(el._raf);
+    el.textContent = formatNumber(0);
+    animateCount(el);
+  });
+}
+
+function goToSlide(index){
+  current=(index+totalSlides)%totalSlides;
+  slideEls.forEach((slide,i)=>slide.classList.toggle('active', i===current));
+  activate(slideEls[current]);
+  updateProgress();
+}
+
+function nextSlide(){
+  goToSlide(current+1);
+}
+
+function startAutoplay(){
+  if(isPaused) return;
+  clearInterval(timer);
+  timer=setInterval(nextSlide, autoplayDelay);
+}
+
+function makeSparkles(){
+  const presentation=document.getElementById('presentation');
+  for(let i=0;i<18;i++){
+    const s=document.createElement('span');
+    s.className='spark';
+    s.style.top=Math.random()*100+'%';
+    s.style.left=Math.random()*100+'%';
+    s.style.animationDelay=(Math.random()*3)+'s';
+    s.style.animationDuration=(2+Math.random()*3)+'s';
+    presentation.appendChild(s);
+  }
+}
+
+makeSparkles();
+goToSlide(0);
+startAutoplay();
+
+window.addEventListener('load', ()=>{
+  clearInterval(timer);
+  startAutoplay();
+});
+
+document.addEventListener('visibilitychange',()=>{
+  if(document.hidden) clearInterval(timer);
+  else if(!isPaused) startAutoplay();
+});
+
+function animateCount(el){
+  const target = parseInt(el.dataset.target, 10);
+  let startTime = null;
+  const duration = el.closest('.closing-box') ? 1700 : 1450;
+
+  function easeOutExpo(t){
+    return t === 1 ? 1 : 1 - Math.pow(2, -10 * t);
+  }
+
+  function step(timestamp){
+    if(!startTime) startTime = timestamp;
+    const progress = Math.min((timestamp - startTime) / duration, 1);
+    const eased = easeOutExpo(progress);
+    const value = Math.floor(target * eased);
+    el.textContent = formatNumber(value);
+
+    if(progress < 1){
+      el._raf = requestAnimationFrame(step);
+    } else {
+      el.textContent = formatNumber(target);
+      el._raf = null;
+    }
+  }
+
+  el._raf = requestAnimationFrame(step);
+}
+
+function formatNumber(num){
+  return new Intl.NumberFormat('en-US').format(num);
+}
+
+const toggleBtn = document.getElementById('toggleBtn');
+const prevBtn = document.getElementById('prevBtn');
+const nextBtn = document.getElementById('nextBtn');
+const toggleText = document.getElementById('toggleText');
+
+toggleBtn.addEventListener('click',()=>{
+  isPaused = !isPaused;
+
+  if(isPaused){
+    clearInterval(timer);
+    toggleBtn.classList.add('paused');
+    toggleText.textContent = 'Play';
+  }else{
+    toggleBtn.classList.remove('paused');
+    toggleText.textContent = 'Pause';
+    startAutoplay();
+  }
+});
+
+nextBtn.addEventListener('click',()=>{
+  clearInterval(timer);
+  nextSlide();
+  if(!isPaused) startAutoplay();
+});
+
+prevBtn.addEventListener('click',()=>{
+  clearInterval(timer);
+  goToSlide(current-1);
+  if(!isPaused) startAutoplay();
+});
+</script>
+</body>
+</html>
