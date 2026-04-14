@@ -144,29 +144,58 @@ body{font-family:'Cairo',sans-serif;background:radial-gradient(circle at top rig
 .spark{width:6px;height:6px;border-radius:50%;background:#fff7d1;filter:blur(.3px);z-index:1;opacity:.7;animation:twinkle 3s ease-in-out infinite}
 
 /* New first slide */
+/* ===== Title Only Slide (FIXED SPACING + POSITION) ===== */
 .title-only{
   display:grid;
   place-items:center;
   text-align:center;
   height:100%;
   position:relative;
-  z-index:2;
+  transform:translateY(-50px); /* رفع العنوان كله لفوق */
 }
+
 .title-only-box{
   width:min(980px,100%);
   padding:28px 20px;
 }
+
 .title-only .tag{
   justify-content:center;
-  margin-bottom:20px;
+  margin-bottom:30px; /* مسافة أكبر بينه وبين العنوان */
 }
+
 .title-only .title{
   margin-bottom:0;
-  font-size:clamp(38px,5.2vw,78px);
-  line-height:1.18;
+  font-size:clamp(32px,5.2vw,78px);
+  line-height:1.8; /* مسافة بين السطور */
+  letter-spacing:0.5px;
 }
-.title-only .title .line{
+
+/* المسافة بين السطرين (باستخدام br) */
+.title-only .title br{
   display:block;
+  content:"";
+  margin-top:18px;
+}
+
+/* تحسين بسيط للموبايل */
+@media (max-width:768px){
+  .title-only{
+    transform:translateY(-30px);
+  }
+
+  .title-only .title{
+    font-size:clamp(26px,8vw,40px);
+    line-height:1.7;
+  }
+
+  .title-only .title br{
+    margin-top:12px;
+  }
+
+  .title-only .tag{
+    margin-bottom:18px;
+  }
 }
 
 @keyframes spin{to{transform:rotate(360deg)}} @keyframes spinReverse{to{transform:rotate(-360deg)}}
