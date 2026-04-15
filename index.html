@@ -146,7 +146,7 @@ body{font-family:'Cairo',sans-serif;background:radial-gradient(circle at top rig
 .slide.show .money-card:nth-child(4),.slide.show .scene:nth-child(4){animation-delay:.36s}
 .spark{width:6px;height:6px;border-radius:50%;background:#fff7d1;filter:blur(.3px);z-index:1;opacity:.7;animation:twinkle 3s ease-in-out infinite}
 
-/* ===== First Slide Title Only (final fixed version) ===== */
+/* ===== First Slide Title Only ===== */
 .title-only{
   display:grid;
   place-items:center;
@@ -177,6 +177,89 @@ body{font-family:'Cairo',sans-serif;background:radial-gradient(circle at top rig
   margin-top:12px;
 }
 
+/* ===== Second Slide Visual Upgrade ===== */
+.slide:nth-of-type(2) .hero{
+  grid-template-columns:1.08fr .92fr;
+  gap:34px;
+  align-items:center;
+}
+.slide:nth-of-type(2) .hero-copy{
+  max-width:100%;
+}
+.slide:nth-of-type(2) .title{
+  line-height:1.5;
+  margin-bottom:18px;
+}
+.slide:nth-of-type(2) .title span{
+  display:block;
+}
+.slide:nth-of-type(2) .title span:first-child{
+  margin-bottom:12px;
+}
+.slide:nth-of-type(2) .lead{
+  max-width:620px;
+  margin-bottom:18px;
+}
+.slide:nth-of-type(2) .hero-points{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:16px;
+  margin-top:18px;
+  align-items:stretch;
+}
+.slide:nth-of-type(2) .hero-point{
+  min-width:0;
+  border-radius:18px;
+  padding:14px 14px 12px;
+  min-height:168px;
+}
+.slide:nth-of-type(2) .hero-point b{
+  font-size:28px;
+}
+.slide:nth-of-type(2) .hero-point small{
+  font-size:10px;
+  line-height:1.6;
+}
+.slide:nth-of-type(2) .hero-point:nth-child(2){
+  transform:scale(1.05) translateY(-6px);
+  transition:all .3s ease;
+  border:1px solid rgba(255,226,154,.6);
+  box-shadow:
+    0 22px 50px rgba(0,0,0,.3),
+    0 0 25px rgba(255,226,154,.25);
+}
+.slide:nth-of-type(2) .hero-point:nth-child(2) b{
+  font-size:36px;
+}
+.slide:nth-of-type(2) .ring-stage{
+  width:min(420px,92%);
+}
+.slide:nth-of-type(2) .hero-point .point-top{
+  position:absolute;
+  top:0;right:0;left:0;
+  height:4px;
+  opacity:.95;
+  border-radius:18px 18px 0 0;
+}
+.slide:nth-of-type(2) .hero-point{
+  position:relative;
+  overflow:hidden;
+}
+.slide:nth-of-type(2) .gold-line .point-top{
+  background:linear-gradient(90deg,#f6c453,#ffe29a);
+}
+.slide:nth-of-type(2) .violet-line .point-top{
+  background:linear-gradient(90deg,#9d7cff,#d5c8ff);
+}
+.slide:nth-of-type(2) .mint-line .point-top{
+  background:linear-gradient(90deg,#6ef0d3,#a9ffee);
+}
+
+/* ensure third card stays inside row on desktop */
+.slide:nth-of-type(2) .hero-points .hero-point:nth-child(3){
+  grid-column:auto;
+}
+
 @keyframes spin{to{transform:rotate(360deg)}}
 @keyframes spinReverse{to{transform:rotate(-360deg)}}
 @keyframes rise{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:translateY(0)}}
@@ -201,6 +284,17 @@ body{font-family:'Cairo',sans-serif;background:radial-gradient(circle at top rig
   .progress-shell{min-width:120px;width:42vw}
   .slide-index{top:18px;left:18px}
   .ring-stage{max-width:280px;margin:auto}
+
+  .slide:nth-of-type(2) .hero{
+    grid-template-columns:1fr;
+    gap:18px;
+  }
+  .slide:nth-of-type(2) .visual-wrap{
+    order:-1;
+  }
+  .slide:nth-of-type(2) .hero-points{
+    grid-template-columns:repeat(3,1fr);
+  }
 }
 
 @media (max-width:768px){
@@ -278,75 +372,43 @@ body{font-family:'Cairo',sans-serif;background:radial-gradient(circle at top rig
 
   .slide:nth-of-type(1){padding-bottom:calc(var(--ctrl-h) + env(safe-area-inset-bottom) + 84px)}
   .slide:nth-of-type(1) .frame{padding-bottom:calc(var(--ctrl-h) + env(safe-area-inset-bottom) + 118px)}
-  .slide:nth-of-type(1) .title-only{
-    transform:translateY(-26px);
-  }
-  .slide:nth-of-type(1) .title-only-box{
-    padding:10px 8px;
-  }
-  .slide:nth-of-type(1) .title-only .tag{
-    margin-bottom:18px;
-  }
+  .slide:nth-of-type(1) .title-only{transform:translateY(-26px)}
+  .slide:nth-of-type(1) .title-only-box{padding:10px 8px}
+  .slide:nth-of-type(1) .title-only .tag{margin-bottom:18px}
   .slide:nth-of-type(1) .title-only .title{
     font-size:clamp(22px,6.1vw,36px);
     line-height:1.72;
     max-width:100%;
   }
-  .slide:nth-of-type(1) .title-only .title br{
-    margin-top:8px;
-  }
+  .slide:nth-of-type(1) .title-only .title br{margin-top:8px}
 
   .slide:nth-of-type(2){padding-bottom:calc(var(--ctrl-h) + env(safe-area-inset-bottom) + 84px)}
   .slide:nth-of-type(2) .frame{padding-bottom:calc(var(--ctrl-h) + env(safe-area-inset-bottom) + 118px)}
   .slide:nth-of-type(2) .ring-stage{max-width:150px;width:min(150px,48vw)}
   .slide:nth-of-type(2) .hero{gap:8px}
-  .slide:nth-of-type(2) .lead{margin-bottom:620px}
-  .slide:nth-of-type(2) .hero-points{margin-top:18px}
-  .slide:nth-of-type(2) .hero-point:last-child{margin-bottom:22px}
+  .slide:nth-of-type(2) .lead{margin-bottom:14px}
+  .slide:nth-of-type(2) .hero-points{
+    grid-template-columns:repeat(2,1fr);
+    gap:10px;
+    margin-top:14px;
+  }
+  .slide:nth-of-type(2) .hero-points .hero-point:nth-child(2){
+    grid-column:1 / -1;
+  }
+  .slide:nth-of-type(2) .hero-point{
+    min-height:auto;
+    padding:12px;
+  }
+  .slide:nth-of-type(2) .hero-point:nth-child(2){
+    transform:none;
+  }
+  .slide:nth-of-type(2) .hero-point:nth-child(2) b{
+    font-size:28px;
+  }
 }
-.slide:nth-of-type(3) .money-note{font-size:10px;line-height:1.45}
-
-/* ===== تعديل عنوان الشريحة التانية ===== */
-.slide:nth-of-type(2) .title{
-  line-height: 1.5;
-}
-
-.slide:nth-of-type(2) .title span{
-  display:block;
-}
-
-.slide:nth-of-type(2) .title span:first-child{
-  margin-bottom:12px;
-}
-  /* تكبير وتمييز الكارت الأوسط (الوديعة) */
-.slide:nth-of-type(2) .hero-point-strong:nth-child(2){
-  transform: scale(1.05);
-  transition: all .3s ease;
-}
-
-.slide:nth-of-type(2) .hero-point-strong:nth-child(2) b{
-  font-size: 36px;
-}
-  
-.slide:nth-of-type(2) .hero-point,
-.slide:nth-of-type(3) .money-card{border-radius:18px}
-.slide:nth-of-type(2) .hero-point{padding:10px 11px}
-.slide:nth-of-type(2) .hero-point b{font-size:20px}
-.slide:nth-of-type(2) .hero-point small{font-size:10px;line-height:1.5}
-.slide:nth-of-type(3) .money-note{font-size:10px;line-height:1.45}
-  /* highlight وديعة بنكية */
-.slide:nth-of-type(2) .hero-point-strong:nth-child(3){
-  transform: scale(1.04);
-  border: 1px solid rgba(255, 226, 154, 0.6);
-  box-shadow:
-    0 22px 50px rgba(0,0,0,.3),
-    0 0 25px rgba(255, 226, 154, 0.25);
-}
-
 @media (max-width:560px){
   .pillars,.scene-grid{grid-template-columns:1fr}
 }
-
 @media (max-width:480px){
   .slide{padding:70px 8px 70px}
   .frame{padding:16px 14px 18px}
@@ -358,9 +420,7 @@ body{font-family:'Cairo',sans-serif;background:radial-gradient(circle at top rig
   .money-number{font-size:28px}
   .summary-card b{font-size:26px}
 
-  .slide:nth-of-type(1) .title-only{
-    transform:translateY(-18px);
-  }
+  .slide:nth-of-type(1) .title-only{transform:translateY(-18px)}
   .slide:nth-of-type(1) .title-only .title{
     font-size:24px;
     line-height:1.68;
@@ -404,72 +464,87 @@ body{font-family:'Cairo',sans-serif;background:radial-gradient(circle at top rig
   </div>
 
   <div class="slides" id="slides">
-    <section class="slide">
-  <div class="frame">
-    <div class="slide-index">02 / 06</div>
 
-    <div class="hero hero-intro">
-      <div class="hero-copy">
-        <div class="tag"><i></i> حصاد عام 2025</div>
-
-        <h1 class="title">
-          <span>جهد تصحيحي نحو</span>
-          <span>الاستقرار والنمو</span>
-        </h1>
-
-        <p class="lead intro-lead">
-          جهد مكثف لإعادة تصحيح المسار وتحسين الأداء، من ضبط المصروفات وتعزيز الإيرادات
-          إلى استثمار الأصول بكفاءة، بهدف الانتقال بالجمعية إلى وضع أكثر استقرارًا
-          وقوة واستدامة.
-        </p>
-
-        <div class="hero-points hero-points-strong">
-          <div class="hero-point hero-point-strong gold-line">
-            <div class="point-top"></div>
-            <b class="count" data-target="109476">0</b>
-            <span>نمو الإيرادات</span>
-            <small>زيادة الإيرادات من 1,387,804 إلى 1,497,280 دينار كويتي.</small>
-          </div>
-
-          <div class="hero-point hero-point-strong violet-line">
-            <div class="point-top"></div>
-            <b class="count" data-target="1000000">0</b>
-            <span>وديعة بنكية</span>
-            <small>تعزيز الوديعة البنكية لتصل إلى 1,000,000 دينار كويتي..</small>
+    <section class="slide active">
+      <div class="frame">
+        <div class="slide-index">01 / 06</div>
+        <div class="title-only">
+          <div class="title-only-box">
+            <div class="tag"><i></i> حصاد عام 2025</div>
+            <h1 class="title">
+              حصاد <span class="accent">جمعية الفحيحيل</span><br>
+              بين تصحيح المسار..<br>
+              والنمو المستدام
+            </h1>
           </div>
         </div>
-        
-          <div class="hero-point hero-point-strong mint-line">
-            <div class="point-top"></div>
-            <b class="count" data-target="165199">0</b>
-            <span>توفير المصروفات</span>
-            <small>خفض المصروفات من 1,588,068 إلى 1,422,869 دينار كويتي.</small>
-          </div>
-
-          
       </div>
+    </section>
 
-      <div class="visual-wrap visual-wrap-intro">
-        <div class="ring-stage ring-stage-intro">
-          <div class="ring"></div>
-          <div class="ring2"></div>
-          <div class="ring3"></div>
+    <section class="slide">
+      <div class="frame">
+        <div class="slide-index">02 / 06</div>
 
-          <div class="core">
-            <div>
-              <strong>2025</strong>
-              <span>عام الإنجاز</span>
+        <div class="hero">
+          <div class="hero-copy">
+            <div class="tag"><i></i> حصاد عام 2025</div>
+
+            <h1 class="title">
+              <span>جهد تصحيحي نحو</span>
+              <span>الاستقرار والنمو</span>
+            </h1>
+
+            <p class="lead">
+              جهد مكثف لإعادة تصحيح المسار وتحسين الأداء، من ضبط المصروفات وتعزيز الإيرادات
+              إلى استثمار الأصول بكفاءة، بهدف الانتقال بالجمعية إلى وضع أكثر استقرارًا
+              وقوة واستدامة.
+            </p>
+
+            <div class="hero-points">
+              <div class="hero-point gold-line">
+                <div class="point-top"></div>
+                <b class="count" data-target="109476">0</b>
+                <span>نمو الإيرادات</span>
+                <small>زيادة الإيرادات من 1,387,804 إلى 1,497,280 دينار كويتي.</small>
+              </div>
+
+              <div class="hero-point violet-line">
+                <div class="point-top"></div>
+                <b class="count" data-target="1000000">0</b>
+                <span>وديعة بنكية</span>
+                <small>تعزيز الوديعة البنكية لتصل إلى 1,000,000 دينار كويتي.</small>
+              </div>
+
+              <div class="hero-point mint-line">
+                <div class="point-top"></div>
+                <b class="count" data-target="165199">0</b>
+                <span>توفير المصروفات</span>
+                <small>خفض المصروفات من 1,588,068 إلى 1,422,869 دينار كويتي.</small>
+              </div>
             </div>
           </div>
 
-          <div class="chip chip1">وديعة 1000,000 د.ك</div>
-          <div class="chip chip2">توفير 165,199 د.ك</div>
-          <div class="chip chip3">نمو 109,476 د.ك</div>
+          <div class="visual-wrap">
+            <div class="ring-stage">
+              <div class="ring"></div>
+              <div class="ring2"></div>
+              <div class="ring3"></div>
+
+              <div class="core">
+                <div>
+                  <strong>2025</strong>
+                  <span>عام الإنجاز</span>
+                </div>
+              </div>
+
+              <div class="chip chip1">وديعة 1,000,000 د.ك</div>
+              <div class="chip chip2">توفير 165,199 د.ك</div>
+              <div class="chip chip3">نمو 109,476 د.ك</div>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
-  </div>
-</section>
+    </section>
 
     <section class="slide">
       <div class="frame">
@@ -483,11 +558,11 @@ body{font-family:'Cairo',sans-serif;background:radial-gradient(circle at top rig
         <div class="money-grid">
           <div class="money-card gold">
             <div class="money-top"><div class="money-icon">🏦</div><div class="money-status">استقرار</div></div>
-            <div class="money-number count" data-target="500000">0</div>
+            <div class="money-number count" data-target="1000000">0</div>
             <span class="money-unit">دينار كويتي</span>
             <div class="money-label">وديعة بنكية</div>
             <div class="money-note">تعزيز السيولة والاحتياطي المالي.</div>
-            <div class="mini-chart" data-vals="0,500000"></div>
+            <div class="mini-chart" data-vals="0,1000000"></div>
           </div>
 
           <div class="money-card violet">
@@ -601,6 +676,7 @@ body{font-family:'Cairo',sans-serif;background:radial-gradient(circle at top rig
         </div>
       </div>
     </section>
+
   </div>
 
   <div class="control-bar">
