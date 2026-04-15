@@ -324,6 +324,13 @@ body{font-family:'Cairo',sans-serif;background:radial-gradient(circle at top rig
 .slide:nth-of-type(2) .hero-point b{font-size:20px}
 .slide:nth-of-type(2) .hero-point small{font-size:10px;line-height:1.5}
 .slide:nth-of-type(3) .money-note{font-size:10px;line-height:1.45}
+  /* highlight وديعة بنكية */
+.slide:nth-of-type(2) .hero-point-strong:nth-child(3){
+  border: 1px solid rgba(255, 226, 154, 0.4);
+  box-shadow:
+    0 18px 40px rgba(0,0,0,.25),
+    0 0 18px rgba(255, 226, 154, 0.15);
+}
 
 @media (max-width:560px){
   .pillars,.scene-grid{grid-template-columns:1fr}
@@ -386,54 +393,70 @@ body{font-family:'Cairo',sans-serif;background:radial-gradient(circle at top rig
   </div>
 
   <div class="slides" id="slides">
-    <section class="slide active">
-      <div class="frame">
-        <div class="slide-index">01 / 06</div>
-        <div class="title-only">
-          <div class="title-only-box">
-            <div class="tag"><i></i> حصاد عام 2025</div>
-            <h1 class="title">
-  حصاد <span class="accent">جمعية الفحيحيل</span><br>
-  بين تصحيح المسار..<br>
-  والنمــو المستــدام
-</h1>
-          </div>
-        </div>
-      </div>
-    </section>
-
     <section class="slide">
-      <div class="frame">
-        <div class="slide-index">02 / 06</div>
-        <div class="hero">
-          <div>
-            <div class="tag"><i></i> حصاد عام 2025</div>
-            <h1 class="title">
-  <span>جهد تصحيحي نحو</span>
-  <span>الاستقرار والنمو</span>
-</h1>
-            <p class="lead">جهد مكثف لإعادة تصحيح المسار وتحسين الأداء، من ضبط المصروفات وتعزيز الإيرادات إلى استثمار الأصول بكفاءة، بهدف الانتقال بالجمعية إلى وضع أكثر استقرارًا وقوة واستدامة.</p>
-            <div class="hero-points">
-              <div class="hero-point"><b class="count" data-target="109476">0</b><span>نمو الإيرادات</span><small>زيادة الإيرادات من 1,387,804 إلى 1,497,280 دينار كويتي.</small></div>
-              <div class="hero-point"><b class="count" data-target="165199">0</b><span>توفير المصروفات</span><small>خفض المصروفات من 1,588,068 إلى 1,422,869 دينار كويتي.</small></div>
-              <div class="hero-point"><b class="count" data-target="500000">0</b><span>وديعة بنكية</span><small>تعزيز الاستقرار المالي عبر تكوين وديعة بنكية داعمة للمركز المالي.</small></div>
-            </div>
+  <div class="frame">
+    <div class="slide-index">02 / 06</div>
+
+    <div class="hero hero-intro">
+      <div class="hero-copy">
+        <div class="tag"><i></i> حصاد عام 2025</div>
+
+        <h1 class="title">
+          <span>جهد تصحيحي نحو</span>
+          <span>الاستقرار والنمو</span>
+        </h1>
+
+        <p class="lead intro-lead">
+          جهد مكثف لإعادة تصحيح المسار وتحسين الأداء، من ضبط المصروفات وتعزيز الإيرادات
+          إلى استثمار الأصول بكفاءة، بهدف الانتقال بالجمعية إلى وضع أكثر استقرارًا
+          وقوة واستدامة.
+        </p>
+
+        <div class="hero-points hero-points-strong">
+          <div class="hero-point hero-point-strong gold-line">
+            <div class="point-top"></div>
+            <b class="count" data-target="109476">0</b>
+            <span>نمو الإيرادات</span>
+            <small>زيادة الإيرادات من 1,387,804 إلى 1,497,280 دينار كويتي.</small>
           </div>
 
-          <div class="visual-wrap">
-            <div class="ring-stage">
-              <div class="ring"></div>
-              <div class="ring2"></div>
-              <div class="ring3"></div>
-              <div class="core"><div><strong>2025</strong><span>عام الإنجاز</span></div></div>
-              <div class="chip chip1">وديعة 500,000 د.ك</div>
-              <div class="chip chip2">توفير 165,199 د.ك</div>
-              <div class="chip chip3">نمو 109,476 د.ك</div>
-            </div>
+          <div class="hero-point hero-point-strong mint-line">
+            <div class="point-top"></div>
+            <b class="count" data-target="165199">0</b>
+            <span>توفير المصروفات</span>
+            <small>خفض المصروفات من 1,588,068 إلى 1,422,869 دينار كويتي.</small>
+          </div>
+
+          <div class="hero-point hero-point-strong violet-line">
+            <div class="point-top"></div>
+            <b class="count" data-target="1000000">0</b>
+            <span>وديعة بنكية</span>
+            <small>تعزيز الوديعة البنكية لتصل إلى 1,000,000 دينار كويتي..</small>
           </div>
         </div>
       </div>
-    </section>
+
+      <div class="visual-wrap visual-wrap-intro">
+        <div class="ring-stage ring-stage-intro">
+          <div class="ring"></div>
+          <div class="ring2"></div>
+          <div class="ring3"></div>
+
+          <div class="core">
+            <div>
+              <strong>2025</strong>
+              <span>عام الإنجاز</span>
+            </div>
+          </div>
+
+          <div class="chip chip1">وديعة 1000,000 د.ك</div>
+          <div class="chip chip2">توفير 165,199 د.ك</div>
+          <div class="chip chip3">نمو 109,476 د.ك</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
     <section class="slide">
       <div class="frame">
