@@ -527,6 +527,11 @@ body{font-family:'Cairo',sans-serif;background:radial-gradient(circle at top rig
 .control-btn.paused .control-icon{display:block;width:0;height:0;border-left:12px solid var(--gold);border-top:7px solid transparent;border-bottom:7px solid transparent}
 .control-btn.paused .control-icon::before,
 .control-btn.paused .control-icon::after{display:none}
+  .slide-count{
+  direction: rtl;
+  unicode-bidi: isolate;
+  text-align: right;
+}
 </style>
 </head>
 <body>
@@ -964,11 +969,6 @@ prevBtn.addEventListener('click',()=>{
   goToSlide(current-1);
   if(!isPaused) startAutoplay();
 });
-  .slide-count{
-  direction: rtl;
-  unicode-bidi: isolate;
-  text-align: right;
-}
-</script>
+  </script>
 </body>
 </html>
