@@ -792,60 +792,58 @@ function updateProgress(){
 
 function activate(slide){
   const charts = slide.querySelectorAll('.mini-chart');
-charts.forEach(chart=>{
-  if(chart.dataset.done) return;
 
-  const vals = chart.dataset.vals.split(',').map(Number);
-  const max = Math.max(...vals, 1);
-  chart.innerHTML = '';
+  charts.forEach(chart=>{
+    if(chart.dataset.done) return;
 
-  /* لو الكارت فيه قيمة واحدة فقط = الوديعة */
-  if(vals.length === 1){
-    const col = document.createElement('div');
-    col.className = 'mini-col';
+    const vals = chart.dataset.vals.split(',').map(Number);
+    const max = Math.max(...vals, 1);
+    chart.innerHTML = '';
 
-    const bar = document.createElement('div');
-    bar.className = 'mini-bar large';
+    /* لو الكارت فيه قيمة واحدة فقط = الوديعة */
+    if(vals.length === 1){
+      const col = document.createElement('div');
+      col.className = 'mini-col';
 
-    const label = document.createElement('span');
-    label.className = 'mini-label';
-    label.textContent = '2025';
+      const bar = document.createElement('div');
+      bar.className = 'mini-bar large';
 
-    bar.appendChild(label);
-    col.appendChild(bar);
-    chart.appendChild(col);
+      const label = document.createElement('span');
+      label.className = 'mini-label';
+      label.textContent = '2025';
 
-    setTimeout(()=>{
-      bar.style.height = (vals[0] / max * 100) + '%';
-    },200);
+      bar.appendChild(label);
+      col.appendChild(bar);
+      chart.appendChild(col);
 
-    chart.dataset.done = true;
-    return;
-  }
+      setTimeout(()=>{
+        bar.style.height = (vals[0] / max * 100) + '%';
+      },200);
 
-  /* باقي الكروت: 2024 + 2025 */
-  vals.forEach((v,i)=>{
-    const col = document.createElement('div');
-    col.className = 'mini-col';
+      chart.dataset.done = true;
+      return;
+    }
 
-    const bar = document.createElement('div');
-    bar.className = 'mini-bar ' + (i === 0 ? 'small' : 'large');
+    /* باقي الكروت: 2024 + 2025 */
+    vals.forEach((v,i)=>{
+      const col = document.createElement('div');
+      col.className = 'mini-col';
 
-    const label = document.createElement('span');
-    label.className = 'mini-label';
-    label.textContent = i === 0 ? '2024' : '2025';
+      const bar = document.createElement('div');
+      bar.className = 'mini-bar ' + (i === 0 ? 'small' : 'large');
 
-    bar.appendChild(label);
-    col.appendChild(bar);
-    chart.appendChild(col);
+      const label = document.createElement('span');
+      label.className = 'mini-label';
+      label.textContent = i === 0 ? '2024' : '2025';
 
-    setTimeout(()=>{
-      bar.style.height = (v / max * 100) + '%';
-    },200);
-  });
+      bar.appendChild(label);
+      col.appendChild(bar);
+      chart.appendChild(col);
 
-  chart.dataset.done = true;
-});
+      setTimeout(()=>{
+        bar.style.height = (v / max * 100) + '%';
+      },200);
+    });
 
     chart.dataset.done = true;
   });
