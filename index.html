@@ -259,54 +259,90 @@ body{font-family:'Cairo',sans-serif;background:radial-gradient(circle at top rig
 }
 
 /* ===== Third Slide Charts Upgrade ===== */
+/* ===== Third Slide Charts Upgrade ===== */
 .mini-chart{
   display:flex;
   gap:12px;
   align-items:flex-end;
   justify-content:space-between;
-  height:92px;
+  height:96px;
   margin-top:14px;
   direction:ltr;
 }
+
 .mini-col{
   flex:1;
   height:100%;
   display:flex;
   align-items:flex-end;
 }
+
 .mini-bar{
   width:100%;
-  background:linear-gradient(180deg,var(--gold),var(--pink));
-  border-radius:6px 6px 0 0;
   height:0;
+  border-radius:8px 8px 0 0;
   transition:height 1.2s ease;
   position:relative;
   display:flex;
-  align-items:flex-end;
+  align-items:center;
   justify-content:center;
-  padding-bottom:6px;
+  overflow:hidden;
 }
+
+/* 2024 */
 .mini-bar.small{
-  color:#f3ecffcc;
+  background:linear-gradient(180deg, rgba(255,255,255,.38), rgba(255,255,255,.18));
 }
-.mini-label.inside{
+
+/* 2025 */
+.mini-bar.large{
+  background:linear-gradient(180deg,var(--gold),var(--pink));
+}
+
+.mini-label{
+  position:absolute;
+  top:50%;
+  left:50%;
+  transform:translate(-50%,-50%);
   font-size:10px;
   line-height:1;
   text-align:center;
-  color:#ffffffd9;
-  font-weight:700;
+  color:#fff;
+  font-weight:800;
+  white-space:nowrap;
   pointer-events:none;
+  text-shadow:0 1px 2px rgba(0,0,0,.25);
 }
+
+/* كارت الوديعة: عامود واحد فقط وأعرض */
 .slide:nth-of-type(3) .money-card.gold .mini-chart{
-  height:104px;
-  gap:10px;
+  height:108px;
+  gap:0;
   margin-top:18px;
 }
-.slide:nth-of-type(3) .money-card.gold .mini-label{
-  font-size:11px;
-}
+
 .slide:nth-of-type(3) .money-card.gold .mini-col{
-  flex:1.15;
+  flex:1;
+}
+
+.slide:nth-of-type(3) .money-card.gold .mini-bar{
+  width:100%;
+}
+
+@media (max-width:768px){
+  .mini-chart{
+    height:62px;
+    gap:8px;
+    margin-top:8px;
+  }
+
+  .mini-label{
+    font-size:9px;
+  }
+
+  .slide:nth-of-type(3) .money-card.gold .mini-chart{
+    height:70px;
+  }
 }
 
 @keyframes spin{to{transform:rotate(360deg)}}
@@ -607,7 +643,7 @@ body{font-family:'Cairo',sans-serif;background:radial-gradient(circle at top rig
             <span class="money-unit">دينار كويتي</span>
             <div class="money-label">وديعة بنكية</div>
             <div class="money-note">تعزيز السيولة والاحتياطي المالي.</div>
-            <div class="mini-chart" data-vals="0,1000000"></div>
+            <div class="mini-chart" data-vals="1000000"></div>
           </div>
 
           <div class="money-card violet">
@@ -756,30 +792,59 @@ function updateProgress(){
 
 function activate(slide){
   const charts = slide.querySelectorAll('.mini-chart');
-  charts.forEach(chart=>{
-    if(chart.dataset.done) return;
-    const vals = chart.dataset.vals.split(',').map(Number);
-    const max = Math.max(...vals, 1);
-    chart.innerHTML='';
+charts.forEach(chart=>{
+  if(chart.dataset.done) return;
 
-    vals.forEach((v,i)=>{
-  const col = document.createElement('div');
-  col.className = 'mini-col';
+  const vals = chart.dataset.vals.split(',').map(Number);
+  const max = Math.max(...vals, 1);
+  chart.innerHTML = '';
 
-  const bar = document.createElement('div');
-  bar.className = 'mini-bar' + (i===0 ? ' small' : '');
+  /* لو الكارت فيه قيمة واحدة فقط = الوديعة */
+  if(vals.length === 1){
+    const col = document.createElement('div');
+    col.className = 'mini-col';
 
-  const label = document.createElement('span');
-  label.className = 'mini-label inside';
-  label.textContent = i===0 ? '2024' : '2025';
+    const bar = document.createElement('div');
+    bar.className = 'mini-bar large';
 
-  bar.appendChild(label);
-  col.appendChild(bar);
-  chart.appendChild(col);
+    const label = document.createElement('span');
+    label.className = 'mini-label';
+    label.textContent = '2025';
 
-  setTimeout(()=>{
-    bar.style.height = (v / max * 100) + '%';
-  },200);
+    bar.appendChild(label);
+    col.appendChild(bar);
+    chart.appendChild(col);
+
+    setTimeout(()=>{
+      bar.style.height = (vals[0] / max * 100) + '%';
+    },200);
+
+    chart.dataset.done = true;
+    return;
+  }
+
+  /* باقي الكروت: 2024 + 2025 */
+  vals.forEach((v,i)=>{
+    const col = document.createElement('div');
+    col.className = 'mini-col';
+
+    const bar = document.createElement('div');
+    bar.className = 'mini-bar ' + (i === 0 ? 'small' : 'large');
+
+    const label = document.createElement('span');
+    label.className = 'mini-label';
+    label.textContent = i === 0 ? '2024' : '2025';
+
+    bar.appendChild(label);
+    col.appendChild(bar);
+    chart.appendChild(col);
+
+    setTimeout(()=>{
+      bar.style.height = (v / max * 100) + '%';
+    },200);
+  });
+
+  chart.dataset.done = true;
 });
 
     chart.dataset.done = true;
