@@ -43,8 +43,15 @@ body{font-family:'Cairo',sans-serif;background:radial-gradient(circle at top rig
 .frame{width:min(1240px,100%);height:min(80vh,820px);border-radius:34px;padding:32px;position:relative;overflow:hidden;background:linear-gradient(180deg,rgba(255,255,255,.10),rgba(255,255,255,.05));border:1px solid rgba(255,255,255,.15);box-shadow:var(--shadow);backdrop-filter:blur(18px)}
 .frame::before{content:"";position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,255,255,.08),transparent 34%,transparent 64%,rgba(255,255,255,.05));pointer-events:none}
 .slide-index{
-  position:absolute;top:24px;left:26px;font-size:14px;color:#f4ecffb4;padding:8px 14px;border-radius:999px;
-  background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);direction:ltr
+  position:absolute;
+  top:24px;
+  left:26px;
+  font-size:14px;
+  color:#f4ecffb4;
+  padding:8px 14px;
+  border-radius:999px;
+  background:rgba(255,255,255,.08);
+  border:1px solid rgba(255,255,255,.12);
 }
 .tag{display:inline-flex;align-items:center;gap:10px;padding:8px 16px;border-radius:999px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);font-size:13px;color:#ffedba;margin-bottom:16px}
 .tag i{width:9px;height:9px;border-radius:50%;display:inline-block;background:var(--gold);box-shadow:0 0 14px rgba(246,196,83,.7)}
@@ -527,26 +534,7 @@ body{font-family:'Cairo',sans-serif;background:radial-gradient(circle at top rig
 .control-btn.paused .control-icon{display:block;width:0;height:0;border-left:12px solid var(--gold);border-top:7px solid transparent;border-bottom:7px solid transparent}
 .control-btn.paused .control-icon::before,
 .control-btn.paused .control-icon::after{display:none}
-  /* ===== Slide Counter Fix ===== */
-.slide-count{
-  position:absolute;
-  top:20px;
-  right:20px;
-
-  direction: rtl;
-  unicode-bidi: isolate;
-
-  text-align: right;
-
-  font-size:14px;
-  color:#ffffffb3;
-
-  background:rgba(255,255,255,0.08);
-  padding:6px 12px;
-  border-radius:20px;
-  backdrop-filter: blur(6px);
-}
-</style>
+ </style>
 </head>
 <body>
 <div class="presentation" id="presentation">
