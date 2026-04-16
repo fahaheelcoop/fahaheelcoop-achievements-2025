@@ -272,9 +272,7 @@ body{font-family:'Cairo',sans-serif;background:radial-gradient(circle at top rig
   flex:1;
   height:100%;
   display:flex;
-  flex-direction:column;
-  justify-content:flex-end;
-  gap:8px;
+  align-items:flex-end;
 }
 .mini-bar{
   width:100%;
@@ -282,15 +280,22 @@ body{font-family:'Cairo',sans-serif;background:radial-gradient(circle at top rig
   border-radius:6px 6px 0 0;
   height:0;
   transition:height 1.2s ease;
+  position:relative;
+  display:flex;
+  align-items:flex-end;
+  justify-content:center;
+  padding-bottom:6px;
 }
 .mini-bar.small{
-  background:rgba(255,255,255,.22);
+  color:#f3ecffcc;
 }
-.mini-label{
+.mini-label.inside{
   font-size:10px;
   line-height:1;
   text-align:center;
-  color:#e6deffb3;
+  color:#ffffffd9;
+  font-weight:700;
+  pointer-events:none;
 }
 .slide:nth-of-type(3) .money-card.gold .mini-chart{
   height:104px;
@@ -758,24 +763,24 @@ function activate(slide){
     chart.innerHTML='';
 
     vals.forEach((v,i)=>{
-      const col = document.createElement('div');
-      col.className = 'mini-col';
+  const col = document.createElement('div');
+  col.className = 'mini-col';
 
-      const bar = document.createElement('div');
-      bar.className = 'mini-bar' + (i===0 ? ' small' : '');
+  const bar = document.createElement('div');
+  bar.className = 'mini-bar' + (i===0 ? ' small' : '');
 
-      const label = document.createElement('span');
-      label.className = 'mini-label';
-      label.textContent = i===0 ? '2024' : '2025';
+  const label = document.createElement('span');
+  label.className = 'mini-label inside';
+  label.textContent = i===0 ? '2024' : '2025';
 
-      col.appendChild(bar);
-      col.appendChild(label);
-      chart.appendChild(col);
+  bar.appendChild(label);
+  col.appendChild(bar);
+  chart.appendChild(col);
 
-      setTimeout(()=>{
-        bar.style.height = (v / max * 100) + '%';
-      },200);
-    });
+  setTimeout(()=>{
+    bar.style.height = (v / max * 100) + '%';
+  },200);
+});
 
     chart.dataset.done = true;
   });
