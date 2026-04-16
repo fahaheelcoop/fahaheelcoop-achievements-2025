@@ -254,10 +254,54 @@ body{font-family:'Cairo',sans-serif;background:radial-gradient(circle at top rig
 .slide:nth-of-type(2) .mint-line .point-top{
   background:linear-gradient(90deg,#6ef0d3,#a9ffee);
 }
-
-/* ensure third card stays inside row on desktop */
 .slide:nth-of-type(2) .hero-points .hero-point:nth-child(3){
   grid-column:auto;
+}
+
+/* ===== Third Slide Charts Upgrade ===== */
+.mini-chart{
+  display:flex;
+  gap:12px;
+  align-items:flex-end;
+  justify-content:space-between;
+  height:92px;
+  margin-top:14px;
+  direction:ltr;
+}
+.mini-col{
+  flex:1;
+  height:100%;
+  display:flex;
+  flex-direction:column;
+  justify-content:flex-end;
+  gap:8px;
+}
+.mini-bar{
+  width:100%;
+  background:linear-gradient(180deg,var(--gold),var(--pink));
+  border-radius:6px 6px 0 0;
+  height:0;
+  transition:height 1.2s ease;
+}
+.mini-bar.small{
+  background:rgba(255,255,255,.22);
+}
+.mini-label{
+  font-size:10px;
+  line-height:1;
+  text-align:center;
+  color:#e6deffb3;
+}
+.slide:nth-of-type(3) .money-card.gold .mini-chart{
+  height:104px;
+  gap:10px;
+  margin-top:18px;
+}
+.slide:nth-of-type(3) .money-card.gold .mini-label{
+  font-size:11px;
+}
+.slide:nth-of-type(3) .money-card.gold .mini-col{
+  flex:1.15;
 }
 
 @keyframes spin{to{transform:rotate(360deg)}}
@@ -344,7 +388,8 @@ body{font-family:'Cairo',sans-serif;background:radial-gradient(circle at top rig
   .money-number{font-size:24px}
   .money-label{font-size:12px}
   .money-note{font-size:10px;line-height:1.45}
-  .mini-chart{height:44px;margin-top:6px}
+  .mini-chart{height:56px;margin-top:8px;gap:8px}
+  .mini-label{font-size:9px}
 
   .panel{padding:16px 14px;height:auto}
   .impact-stack,.pillars,.scene-grid{gap:10px;margin-top:10px}
@@ -426,11 +471,6 @@ body{font-family:'Cairo',sans-serif;background:radial-gradient(circle at top rig
     line-height:1.68;
   }
 }
-
-/* Mini Charts */
-.mini-chart{display:flex;gap:12px;align-items:flex-end;height:80px;margin-top:12px}
-.mini-bar{flex:1;background:linear-gradient(180deg,var(--gold),var(--pink));border-radius:6px 6px 0 0;height:0;transition:height 1.2s ease}
-.mini-bar.small{background:rgba(255,255,255,.2)}
 
 /* Controls Layout */
 .control-bar{position:fixed;bottom:10px;left:50%;transform:translateX(-50%);z-index:40;display:flex;align-items:center;gap:12px}
@@ -608,7 +648,7 @@ body{font-family:'Cairo',sans-serif;background:radial-gradient(circle at top rig
             <div class="impact-stack">
               <div class="impact-card"><div class="impact-icon">🛒</div><div class="impact-body"><strong>تطوير سوق الفواكه والخضار</strong><p>تجديد السوق بالكامل بما ساهم في رفع المبيعات بصورة ملحوظة ومستدامة.</p><div class="impact-chip">رفع المبيعات</div></div></div>
               <div class="impact-card"><div class="impact-icon">📋</div><div class="impact-body"><strong>كفاءة العقود</strong><p>تخفيض عقد النظافة من 115 إلى 75 دينار، مع مراجعة عقود الأمن والنقل والصيانة.</p><div class="impact-chip">40 د.ك شهرياً</div></div></div>
-              <div class="impact-card"><div class="icon">🏦</div><div class="impact-body"><strong>تحسين الأصول</strong><p>تحويل فرع 7 من فرع خاسر إلى فرع بنك، وتشغيل ملاعب كرة القدم كمصدر دخل إضافي.</p><div class="impact-chip">استثمار للأصل</div></div></div>
+              <div class="impact-card"><div class="impact-icon">🏦</div><div class="impact-body"><strong>تحسين الأصول</strong><p>تحويل فرع 7 من فرع خاسر إلى فرع بنك، وتشغيل ملاعب كرة القدم كمصدر دخل إضافي.</p><div class="impact-chip">استثمار للأصل</div></div></div>
             </div>
           </div>
 
@@ -714,16 +754,29 @@ function activate(slide){
   charts.forEach(chart=>{
     if(chart.dataset.done) return;
     const vals = chart.dataset.vals.split(',').map(Number);
-    const max = Math.max(...vals);
+    const max = Math.max(...vals, 1);
     chart.innerHTML='';
+
     vals.forEach((v,i)=>{
-      const bar=document.createElement('div');
-      bar.className='mini-bar'+(i===0?' small':'');
-      chart.appendChild(bar);
+      const col = document.createElement('div');
+      col.className = 'mini-col';
+
+      const bar = document.createElement('div');
+      bar.className = 'mini-bar' + (i===0 ? ' small' : '');
+
+      const label = document.createElement('span');
+      label.className = 'mini-label';
+      label.textContent = i===0 ? '2024' : '2025';
+
+      col.appendChild(bar);
+      col.appendChild(label);
+      chart.appendChild(col);
+
       setTimeout(()=>{
-        bar.style.height = (v/max*100)+'%';
+        bar.style.height = (v / max * 100) + '%';
       },200);
     });
+
     chart.dataset.done = true;
   });
 
