@@ -188,7 +188,7 @@ body{font-family:'Cairo',sans-serif;background:radial-gradient(circle at top rig
 .slide:nth-of-type(2) .hero{
   grid-template-columns:1.04fr .96fr;
   gap:34px;
-  align-items:flex-start; /* كان center */
+  align-items:center;
 }
 
 .slide:nth-of-type(2) .hero-copy{
@@ -196,7 +196,7 @@ body{font-family:'Cairo',sans-serif;background:radial-gradient(circle at top rig
   display:flex;
   flex-direction:column;
   align-items:flex-start;
-  justify-content:flex-start; /* مهم */
+  justify-content:flex-start;
 }
 
 .slide:nth-of-type(2) .hero-copy .tag{
@@ -222,37 +222,11 @@ body{font-family:'Cairo',sans-serif;background:radial-gradient(circle at top rig
   margin-bottom:16px;
 }
 
-.slide:nth-of-type(2) .featured-deposit{
-  position:relative;
-  overflow:hidden;
-  width:100%;
-  min-height:150px;
-  border-radius:22px;
-  padding:18px 18px 16px;
-  margin-bottom:16px;
-  border:1px solid rgba(255,226,154,.35);
-  box-shadow:0 18px 38px rgba(0,0,0,.22), 0 0 24px rgba(157,124,255,.18);
-}
-
-.slide:nth-of-type(2) .featured-deposit b{
-  font-size:38px;
-  margin-bottom:6px;
-}
-
-.slide:nth-of-type(2) .featured-deposit span{
-  font-size:16px;
-  margin-bottom:8px;
-}
-
-.slide:nth-of-type(2) .featured-deposit small{
-  font-size:11px;
-  line-height:1.75;
-}
-
 .slide:nth-of-type(2) .hero-points.two-cards{
   display:grid;
   grid-template-columns:repeat(2, minmax(0,1fr));
   gap:14px;
+  width:100%;
   margin-top:0;
   align-items:stretch;
 }
@@ -280,6 +254,32 @@ body{font-family:'Cairo',sans-serif;background:radial-gradient(circle at top rig
   line-height:1.6;
 }
 
+.slide:nth-of-type(2) .hero-points.two-cards .featured-deposit{
+  grid-column:1 / -1;
+  width:100%;
+  min-height:150px;
+  border-radius:22px;
+  padding:18px 18px 16px;
+  margin-bottom:0;
+  border:1px solid rgba(255,226,154,.35);
+  box-shadow:0 18px 38px rgba(0,0,0,.22), 0 0 24px rgba(157,124,255,.18);
+}
+
+.slide:nth-of-type(2) .hero-points.two-cards .featured-deposit b{
+  font-size:38px;
+  margin-bottom:6px;
+}
+
+.slide:nth-of-type(2) .hero-points.two-cards .featured-deposit span{
+  font-size:16px;
+  margin-bottom:8px;
+}
+
+.slide:nth-of-type(2) .hero-points.two-cards .featured-deposit small{
+  font-size:11px;
+  line-height:1.75;
+}
+
 .slide:nth-of-type(2) .ring-stage{
   width:min(420px,92%);
 }
@@ -292,42 +292,21 @@ body{font-family:'Cairo',sans-serif;background:radial-gradient(circle at top rig
   border-radius:18px 18px 0 0;
 }
 
+.slide:nth-of-type(2) .featured-deposit .point-top{
+  border-radius:22px 22px 0 0;
+}
+
 .slide:nth-of-type(2) .gold-line .point-top{
   background:linear-gradient(90deg,#f6c453,#ffe29a);
 }
+
 .slide:nth-of-type(2) .violet-line .point-top{
   background:linear-gradient(90deg,#9d7cff,#d5c8ff);
 }
+
 .slide:nth-of-type(2) .mint-line .point-top{
   background:linear-gradient(90deg,#6ef0d3,#a9ffee);
 }
-  /* ===== FIX SLIDE 2 LAYOUT FINAL ===== */
-
-/* 1) منع شد العناصر عمودياً */
-.slide:nth-of-type(2) .hero{
-  align-items:flex-start !important;
-}
-
-/* 2) تثبيت المحتوى ناحية فوق */
-.slide:nth-of-type(2) .hero-copy{
-  justify-content:flex-start !important;
-}
-
-/* 3) منع تمدد الكروت */
-.slide:nth-of-type(2) .hero-point{
-  flex:0 0 auto;
-}
-
-/* 4) إصلاح جريد الكروت */
-.slide:nth-of-type(2) .hero-points.two-cards{
-  align-items:start !important;
-}
-
-/* 5) تثبيت كارت الوديعة */
-.slide:nth-of-type(2) .featured-deposit{
-  align-self:flex-start;
-}
-
 /* ===== Third Slide Charts Upgrade ===== */
 .mini-chart{
   display:flex;
@@ -630,28 +609,27 @@ body{font-family:'Cairo',sans-serif;background:radial-gradient(circle at top rig
             </p>
 
               <div class="hero-points two-cards">
-              <div class="hero-point mint-line">
-                <div class="point-top"></div>
-                <b class="count" data-target="165199">0</b>
-                <span>توفير المصروفات</span>
-                <small>خفض المصروفات من 1,588,068 إلى 1,422,869 دينار كويتي.</small>
-              </div>
+  <div class="hero-point featured-deposit violet-line">
+    <div class="point-top"></div>
+    <b class="count" data-target="1000000">0</b>
+    <span>وديعة بنكية</span>
+    <small>تعزيز الوديعة البنكية لتصل إلى 1,000,000 دينار كويتي.</small>
+  </div>
 
-                 <div class="hero-point featured-deposit violet-line">
-              <div class="point-top"></div>
-              <b class="count" data-target="1000000">0</b>
-              <span>وديعة بنكية</span>
-              <small>تعزيز الوديعة البنكية لتصل إلى 1,000,000 دينار كويتي.</small>
-            </div>
+  <div class="hero-point mint-line">
+    <div class="point-top"></div>
+    <b class="count" data-target="165199">0</b>
+    <span>توفير المصروفات</span>
+    <small>خفض المصروفات من 1,588,068 إلى 1,422,869 دينار كويتي.</small>
+  </div>
 
-              <div class="hero-point gold-line">
-                <div class="point-top"></div>
-                <b class="count" data-target="109476">0</b>
-                <span>نمو الإيرادات</span>
-                <small>زيادة الإيرادات من 1,387,804 إلى 1,497,280 دينار كويتي.</small>
-              </div>
-            </div>
-          </div>
+  <div class="hero-point gold-line">
+    <div class="point-top"></div>
+    <b class="count" data-target="109476">0</b>
+    <span>نمو الإيرادات</span>
+    <small>زيادة الإيرادات من 1,387,804 إلى 1,497,280 دينار كويتي.</small>
+  </div>
+</div>
 
           <div class="visual-wrap">
             <div class="ring-stage">
