@@ -534,6 +534,26 @@ body{font-family:'Cairo',sans-serif;background:radial-gradient(circle at top rig
 .control-btn.paused .control-icon{display:block;width:0;height:0;border-left:12px solid var(--gold);border-top:7px solid transparent;border-bottom:7px solid transparent}
 .control-btn.paused .control-icon::before,
 .control-btn.paused .control-icon::after{display:none}
+
+  /* Fix after reordering money cards */
+.slide:nth-of-type(3) .money-grid{
+  display:grid;
+  grid-template-columns:repeat(4, minmax(0, 1fr));
+  gap:18px;
+}
+
+.slide:nth-of-type(3) .money-card{
+  grid-column:auto !important;
+  grid-row:auto !important;
+  min-width:0;
+  width:auto;
+}
+
+.slide:nth-of-type(3) .money-card.gold{
+  grid-column:auto !important;
+  grid-row:auto !important;
+}
+  
  </style>
 </head>
 <body>
