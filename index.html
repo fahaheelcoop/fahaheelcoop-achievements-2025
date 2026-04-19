@@ -188,7 +188,7 @@ body{font-family:'Cairo',sans-serif;background:radial-gradient(circle at top rig
 .slide:nth-of-type(2) .hero{
   grid-template-columns:1.04fr .96fr;
   gap:34px;
-  align-items:center;
+  align-items:flex-start; /* كان center */
 }
 
 .slide:nth-of-type(2) .hero-copy{
@@ -196,6 +196,7 @@ body{font-family:'Cairo',sans-serif;background:radial-gradient(circle at top rig
   display:flex;
   flex-direction:column;
   align-items:flex-start;
+  justify-content:flex-start; /* مهم */
 }
 
 .slide:nth-of-type(2) .hero-copy .tag{
@@ -299,6 +300,32 @@ body{font-family:'Cairo',sans-serif;background:radial-gradient(circle at top rig
 }
 .slide:nth-of-type(2) .mint-line .point-top{
   background:linear-gradient(90deg,#6ef0d3,#a9ffee);
+}
+  /* ===== FIX SLIDE 2 LAYOUT FINAL ===== */
+
+/* 1) منع شد العناصر عمودياً */
+.slide:nth-of-type(2) .hero{
+  align-items:flex-start !important;
+}
+
+/* 2) تثبيت المحتوى ناحية فوق */
+.slide:nth-of-type(2) .hero-copy{
+  justify-content:flex-start !important;
+}
+
+/* 3) منع تمدد الكروت */
+.slide:nth-of-type(2) .hero-point{
+  flex:0 0 auto;
+}
+
+/* 4) إصلاح جريد الكروت */
+.slide:nth-of-type(2) .hero-points.two-cards{
+  align-items:start !important;
+}
+
+/* 5) تثبيت كارت الوديعة */
+.slide:nth-of-type(2) .featured-deposit{
+  align-self:flex-start;
 }
 
 /* ===== Third Slide Charts Upgrade ===== */
