@@ -464,58 +464,118 @@ body{font-family:'Cairo',sans-serif;background:radial-gradient(circle at top rig
   .control-icon::before,.control-icon::after{height:10px}
   .chev{width:8px;height:8px}
 
-  .slide:nth-of-type(1){padding-bottom:calc(var(--ctrl-h) + env(safe-area-inset-bottom) + 84px)}
-  .slide:nth-of-type(1) .frame{padding-bottom:calc(var(--ctrl-h) + env(safe-area-inset-bottom) + 118px)}
-  .slide:nth-of-type(1) .title-only{transform:translateY(-26px)}
-  .slide:nth-of-type(1) .title-only-box{padding:10px 8px}
-  .slide:nth-of-type(1) .title-only .tag{margin-bottom:18px}
-  .slide:nth-of-type(1) .title-only .title{
-    font-size:clamp(22px,6.1vw,36px);
-    line-height:1.72;
-    max-width:100%;
-  }
-  .slide:nth-of-type(1) .title-only .title br{margin-top:8px}
-
-  .slide:nth-of-type(2){padding-bottom:calc(var(--ctrl-h) + env(safe-area-inset-bottom) + 84px)}
-/* 👇 ده التعديل الثاني (حل الشريحة 2 بس) */
-.slide:nth-of-type(2) .frame{
-  overflow:visible;
+  .slide:nth-of-type(1){
+  padding-bottom:calc(var(--ctrl-h) + env(safe-area-inset-bottom) + 110px);
 }
 
+.slide:nth-of-type(1) .frame{
+  padding-bottom:calc(var(--ctrl-h) + env(safe-area-inset-bottom) + 140px);
+}
+
+.slide:nth-of-type(1) .title-only{
+  transform:translateY(20px); /* 👈 نزلناه لتحت */
+}
+
+.slide:nth-of-type(1) .title-only-box{
+  padding:18px 10px 10px;
+}
+
+.slide:nth-of-type(1) .title-only .tag{
+  margin-bottom:22px;
+  font-size:13px;
+  padding:8px 16px;
+}
+
+.slide:nth-of-type(1) .title-only .title{
+  font-size:clamp(30px,9vw,46px); /* 👈 أكبر بوضوح */
+  line-height:1.5;
+  max-width:100%;
+}
+
+.slide:nth-of-type(1) .title-only .title br{
+  margin-top:10px;
+}
 .slide:nth-of-type(2){
+  padding-bottom:calc(var(--ctrl-h) + env(safe-area-inset-bottom) + 130px);
+  overflow-y:auto;
+  overflow-x:hidden;
+  -webkit-overflow-scrolling:touch;
+}
+
+.slide:nth-of-type(2) .frame{
+  height:auto;
+  min-height:auto;
   overflow:visible;
+  padding-bottom:calc(var(--ctrl-h) + env(safe-area-inset-bottom) + 170px);
 }
 
 .slide:nth-of-type(2) .hero{
+  grid-template-columns:1fr;
+  gap:16px;
+  height:auto;
   align-items:flex-start;
-}  .slide:nth-of-type(2) .ring-stage{max-width:150px;width:min(150px,48vw)}
-  .slide:nth-of-type(2) .hero{gap:8px}
-  .slide:nth-of-type(2) .lead{margin-bottom:12px}
-  .slide:nth-of-type(2) .featured-deposit{
-    min-height:auto;
-    padding:14px 14px 12px;
-    margin-bottom:12px;
-  }
-  .slide:nth-of-type(2) .featured-deposit b{
-    font-size:30px;
-  }
-  .slide:nth-of-type(2) .featured-deposit span{
-    font-size:14px;
-  }
-  .slide:nth-of-type(2) .featured-deposit small{
-    font-size:10px;
-    line-height:1.6;
-  }
-  .slide:nth-of-type(2) .hero-points.two-cards{
-    grid-template-columns:repeat(2,1fr);
-    gap:10px;
-  }
-  .slide:nth-of-type(2) .hero-points.two-cards .hero-point{
-  min-height:140px;
 }
-  .slide:nth-of-type(2) .hero-points.two-cards .hero-point b{
-    font-size:24px;
-  }
+
+.slide:nth-of-type(2) .visual-wrap{
+  order:-1;
+}
+
+.slide:nth-of-type(2) .ring-stage{
+  max-width:170px;
+  width:min(170px,52vw);
+  margin:auto;
+}
+
+.slide:nth-of-type(2) .hero-copy{
+  width:100%;
+}
+
+.slide:nth-of-type(2) .hero-copy .tag{
+  align-self:flex-end;
+  margin-bottom:14px;
+}
+
+.slide:nth-of-type(2) .title{
+  font-size:clamp(26px,8vw,40px);
+  line-height:1.35;
+  margin-bottom:14px;
+}
+
+.slide:nth-of-type(2) .lead{
+  font-size:12px;
+  line-height:1.8;
+  margin-bottom:14px;
+}
+
+.slide:nth-of-type(2) .hero-points.two-cards{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:12px;
+  width:100%;
+}
+
+.slide:nth-of-type(2) .hero-points.two-cards .hero-point{
+  min-height:150px;
+  padding:14px 12px;
+  border-radius:18px;
+}
+
+.slide:nth-of-type(2) .hero-points.two-cards .hero-point b{
+  font-size:20px;
+}
+
+.slide:nth-of-type(2) .hero-points.two-cards .hero-point span{
+  font-size:11px;
+}
+
+.slide:nth-of-type(2) .hero-points.two-cards .hero-point small{
+  font-size:9px;
+  line-height:1.55;
+}
+
+/* الكارت الثالث تحت */
+.slide:nth-of-type(2) .hero-points.two-cards .hero-point:last-child{
+  grid-column:1 / -1;
 }
 
 @media (max-width:560px){
